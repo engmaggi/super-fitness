@@ -1,0 +1,181 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/rubik";
+@import "@fontsource/baloo-thambi-2/400.css";
+@import "@fontsource/baloo-thambi-2/500.css";
+@import "@fontsource/baloo-thambi-2/600.css";
+@import "@fontsource/baloo-thambi-2/700.css";
+@import "@fontsource/baloo-thambi-2/800.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-heading: "Baloo Thambi 2", sans-serif;
+  --font-sans: "Rubik Variable", sans-serif;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --color-font-2: var(--font-2);
+  --color-surface: var(--surface);
+  --color-link-accent: var(--link-accent);
+  --color-level-beginner: var(--level-beginner);
+  --color-level-intermediate: var(--level-intermediate);
+  --color-level-advanced: var(--level-advanced);
+  --radius-control: var(--radius);
+  --radius-auth: 3.125rem;
+  --radius-pill: 6.25rem;
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+  --text-page-title: 40px;
+  --text-page-title--line-height: 1.4;
+}
+
+:root {
+  /* Figma variables: Main, Font 2. Other values from applied layers. */
+  --background: #242424;
+  --foreground: #f3f3f4;
+  --font-2: #d3d3d3;
+  --link-accent: #ff6a00;
+  --surface: #242424;
+  --card: rgb(36 36 36 / 50%);
+  --card-foreground: #f3f3f4;
+  --popover: #242424;
+  --popover-foreground: #f3f3f4;
+  --primary: #ff4100;
+  --primary-foreground: #f3f3f4;
+  --secondary: #282828;
+  --secondary-foreground: #f3f3f4;
+  --muted: #282828;
+  --muted-foreground: #d3d3d3;
+  --accent: rgb(36 36 36 / 60%);
+  --accent-foreground: #f3f3f4;
+  --destructive: oklch(0.65 0.22 25);
+  --border: #282828;
+  --input: #d9d9d9;
+  --ring: #ff4100;
+  --chart-1: #ff4100;
+  --chart-2: #d3d3d3;
+  --chart-3: #f3f3f4;
+  --chart-4: #282828;
+  --chart-5: #242424;
+  --radius: 1.25rem;
+  --sidebar: #242424;
+  --sidebar-foreground: #f3f3f4;
+  --sidebar-primary: #ff4100;
+  --sidebar-primary-foreground: #f3f3f4;
+  --sidebar-accent: #282828;
+  --sidebar-accent-foreground: #f3f3f4;
+  --sidebar-border: #282828;
+  --sidebar-ring: #ff4100;
+  --level-beginner: #ff4100;
+  --level-intermediate: #d3d3d3;
+  --level-advanced: #d3d3d3;
+}
+
+.dark {
+  --background: #242424;
+  --foreground: #f3f3f4;
+  --font-2: #d3d3d3;
+  --link-accent: #ff6a00;
+  --surface: #242424;
+  --card: rgb(36 36 36 / 50%);
+  --card-foreground: #f3f3f4;
+  --popover: #242424;
+  --popover-foreground: #f3f3f4;
+  --primary: #ff4100;
+  --primary-foreground: #f3f3f4;
+  --secondary: #282828;
+  --secondary-foreground: #f3f3f4;
+  --muted: #282828;
+  --muted-foreground: #d3d3d3;
+  --accent: rgb(36 36 36 / 60%);
+  --accent-foreground: #f3f3f4;
+  --destructive: oklch(0.65 0.22 25);
+  --border: #282828;
+  --input: #d9d9d9;
+  --ring: #ff4100;
+  --chart-1: #ff4100;
+  --chart-2: #d3d3d3;
+  --chart-3: #f3f3f4;
+  --chart-4: #282828;
+  --chart-5: #242424;
+  --radius: 1.25rem;
+  --sidebar: #242424;
+  --sidebar-foreground: #f3f3f4;
+  --sidebar-primary: #ff4100;
+  --sidebar-primary-foreground: #f3f3f4;
+  --sidebar-accent: #282828;
+  --sidebar-accent-foreground: #f3f3f4;
+  --sidebar-border: #282828;
+  --sidebar-ring: #ff4100;
+  --level-beginner: #ff4100;
+  --level-intermediate: #d3d3d3;
+  --level-advanced: #d3d3d3;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply font-sans;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+  }
+}
+
+@layer components {
+  /* Desktop-6 About title — not a default Tailwind size (4xl=36, 5xl=48). */
+  .text-page-title {
+    font-family: var(--font-heading);
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-transform: capitalize;
+    color: var(--foreground);
+  }
+}
