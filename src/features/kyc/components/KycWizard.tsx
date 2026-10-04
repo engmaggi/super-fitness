@@ -13,26 +13,27 @@
  * with the signup form fields before POSTing to the server.
  */
 
-import { useState, useRef, useCallback } from "react"
-import { cn } from "cn"
+import { useState, useRef, useCallback } from "react";
+import { cn } from "cn";
+import { Mars, Venus, ChevronDown, Circle } from "lucide-react";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 export interface KycData {
-  gender: "male" | "female"
-  age: number
-  weight: number
-  height: number
-  goal: string
-  activityLevel: string
+  gender: "male" | "female";
+  age: number;
+  weight: number;
+  height: number;
+  goal: string;
+  activityLevel: string;
 }
 
 interface KycWizardProps {
   /** Called when the user completes all 6 steps */
-  onComplete: (data: KycData) => void
+  onComplete: (data: KycData) => void;
   /** Optional: start values (e.g. from localStorage) */
-  initialData?: Partial<KycData>
-  className?: string
+  initialData?: Partial<KycData>;
+  className?: string;
 }
 
 // ─── Constants ────────────────────────────────────────────────────────────────
@@ -43,47 +44,41 @@ const GOALS = [
   "Get fitter",
   "Gain more flexible",
   "Learn the basic",
-]
+];
 
 const ACTIVITY_LEVELS = [
-  { value: "level1", label: "Sedentary", description: "Little or no exercise" },
+  { value: "level1", label: "Rookie", description: "Little or no exercise" },
   {
     value: "level2",
-    label: "Lightly active",
+    label: "Beginner",
     description: "Light exercise 1-3 days/week",
   },
   {
     value: "level3",
-    label: "Moderately active",
+    label: "Intermediate",
     description: "Moderate exercise 3-5 days/week",
   },
   {
     value: "level4",
-    label: "Very active",
+    label: "Advance",
     description: "Hard exercise 6-7 days/week",
   },
   {
     value: "level5",
-    label: "Super active",
+    label: "True Beast",
     description: "Very hard exercise & physical job",
   },
-]
+];
 
-const TOTAL_STEPS = 6
+const TOTAL_STEPS = 6;
 
 // ─── Progress Ring ────────────────────────────────────────────────────────────
 
-function ProgressRing({
-  step,
-  total,
-}: {
-  step: number
-  total: number
-}) {
-  const r = 18
-  const circ = 2 * Math.PI * r
-  const progress = step / total
-  const offset = circ * (1 - progress)
+function ProgressRing({ step, total }: { step: number; total: number }) {
+  const r = 18;
+  const circ = 2 * Math.PI * r;
+  const progress = step / total;
+  const offset = circ * (1 - progress);
 
   return (
     <div className="relative flex items-center justify-center">
@@ -113,7 +108,7 @@ function ProgressRing({
         {step}/{total}
       </span>
     </div>
-  )
+  );
 }
 
 // ─── Scroll Picker ────────────────────────────────────────────────────────────
@@ -125,55 +120,58 @@ function ScrollPicker({
   max,
   unit,
 }: {
-  value: number
-  onChange: (v: number) => void
-  min: number
-  max: number
-  unit: string
+  value: number;
+  onChange: (v: number) => void;
+  min: number;
+  max: number;
+  unit: string;
 }) {
-  const VISIBLE = 7 // odd number → centre item is selected
-  const half = Math.floor(VISIBLE / 2)
-  const dragStart = useRef<{ y: number; val: number } | null>(null)
+  const VISIBLE = 7; // odd number → centre item is selected
+  const half = Math.floor(VISIBLE / 2);
+  const dragStart = useRef<{ x: number; val: number } | null>(null);
 
-  const clamp = (v: number) => Math.max(min, Math.min(max, v))
+  const clamp = (v: number) => Math.max(min, Math.min(max, v));
 
   const items = Array.from({ length: VISIBLE }, (_, i) => {
-    const idx = i - half
-    const v = value + idx
-    return { idx, v }
-  })
+    const idx = i - half;
+    const v = value + idx;
+    return { idx, v };
+  });
 
   const handleWheel = useCallback(
     (e: React.WheelEvent) => {
-      e.preventDefault()
-      onChange(clamp(value + Math.sign(e.deltaY)))
+      e.preventDefault();
+      // support both horizontal trackpad swipe and vertical scroll
+      const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+      onChange(clamp(value + Math.sign(delta)));
     },
     [value, onChange, min, max],
-  )
+  );
 
   const handlePointerDown = (e: React.PointerEvent) => {
-    dragStart.current = { y: e.clientY, val: value }
-    ;(e.currentTarget as HTMLElement).setPointerCapture(e.pointerId)
-  }
+    dragStart.current = { x: e.clientX, val: value };
+    (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+  };
 
   const handlePointerMove = (e: React.PointerEvent) => {
-    if (!dragStart.current) return
-    const dy = dragStart.current.y - e.clientY
-    const delta = Math.round(dy / 24)
-    onChange(clamp(dragStart.current.val + delta))
-  }
+    if (!dragStart.current) return;
+    // drag left → increase, drag right → decrease (ruler feel)
+    const dx = dragStart.current.x - e.clientX;
+    const delta = Math.round(dx / 28);
+    onChange(clamp(dragStart.current.val + delta));
+  };
 
   const handlePointerUp = () => {
-    dragStart.current = null
-  }
+    dragStart.current = null;
+  };
 
   return (
-    <div className="flex flex-col items-center gap-1 select-none">
-      <p className="font-heading text-sm font-semibold text-primary">{unit}</p>
+    <div className="flex flex-col items-center gap-3 select-none">
+      <p className="font-heading text-sm font-semibold text-primary uppercase tracking-widest">{unit}</p>
 
-      {/* Ticker */}
+      {/* Horizontal ticker — drag/swipe left-right */}
       <div
-        className="relative flex touch-none cursor-ns-resize items-center gap-1 overflow-hidden py-2"
+        className="relative flex touch-none cursor-ew-resize items-end gap-1 overflow-hidden px-2"
         onWheel={handleWheel}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
@@ -181,55 +179,41 @@ function ScrollPicker({
         onPointerCancel={handlePointerUp}
       >
         {items.map(({ idx, v }) => {
-          const isSelected = idx === 0
-          const dist = Math.abs(idx)
-          const opacity = dist === 0 ? 1 : dist === 1 ? 0.7 : dist === 2 ? 0.45 : 0.2
-          const scale = isSelected ? 1.35 : 1
-          const isValid = v >= min && v <= max
+          const isSelected = idx === 0;
+          const dist = Math.abs(idx);
+          const opacity =
+            dist === 0 ? 1 : dist === 1 ? 0.65 : dist === 2 ? 0.38 : 0.18;
+          const scale = isSelected ? 1.4 : 1;
+          const isValid = v >= min && v <= max;
 
           return (
             <button
               key={idx}
               type="button"
               onClick={() => isValid && onChange(clamp(v))}
-              style={{ opacity, transform: `scale(${scale})`, transition: "all 0.15s ease" }}
+              style={{
+                opacity,
+                transform: `scale(${scale})`,
+                transition: "all 0.15s ease",
+              }}
               className={cn(
                 "w-10 text-center font-heading font-bold leading-none",
-                isSelected ? "text-primary text-3xl" : "text-foreground text-xl",
+                isSelected
+                  ? "text-primary text-3xl"
+                  : "text-foreground text-xl",
                 !isValid && "invisible",
               )}
             >
               {isValid ? v : ""}
             </button>
-          )
+          );
         })}
       </div>
 
-      {/* Up/down nudge arrows */}
-      <div className="flex flex-col items-center gap-0.5 mt-1">
-        <button
-          type="button"
-          onClick={() => onChange(clamp(value - 1))}
-          className="text-foreground/60 hover:text-primary transition-colors"
-          aria-label="Decrease"
-        >
-          <svg width="20" height="12" viewBox="0 0 20 12" fill="currentColor">
-            <path d="M10 0L20 12H0L10 0Z" />
-          </svg>
-        </button>
-        <button
-          type="button"
-          onClick={() => onChange(clamp(value + 1))}
-          className="text-foreground/60 hover:text-primary transition-colors"
-          aria-label="Increase"
-        >
-          <svg width="20" height="12" viewBox="0 0 20 12" fill="currentColor">
-            <path d="M10 12L0 0H20L10 12Z" />
-          </svg>
-        </button>
-      </div>
+      {/* Down-arrow indicator below the selected number */}
+      <ChevronDown className="text-primary" size={20} />
     </div>
-  )
+  );
 }
 
 // ─── Step components ──────────────────────────────────────────────────────────
@@ -238,8 +222,8 @@ function StepGender({
   value,
   onChange,
 }: {
-  value: KycData["gender"] | ""
-  onChange: (v: KycData["gender"]) => void
+  value: KycData["gender"] | "";
+  onChange: (v: KycData["gender"]) => void;
 }) {
   return (
     <div className="flex flex-col items-center gap-8">
@@ -267,29 +251,9 @@ function StepGender({
             )}
           >
             {g === "male" ? (
-              <svg
-                width="32"
-                height="32"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-              >
-                <circle cx="10" cy="14" r="5" />
-                <path d="M19 5l-5 5m0-5h5v5" />
-              </svg>
+              <Mars size={32} strokeWidth={1.5} />
             ) : (
-              <svg
-                width="32"
-                height="32"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-              >
-                <circle cx="12" cy="8" r="5" />
-                <path d="M12 13v8m-3-4h6" />
-              </svg>
+              <Venus size={32} strokeWidth={1.5} />
             )}
             <span className="font-heading text-xs font-semibold capitalize">
               {g}
@@ -298,15 +262,15 @@ function StepGender({
         ))}
       </div>
     </div>
-  )
+  );
 }
 
 function StepAge({
   value,
   onChange,
 }: {
-  value: number
-  onChange: (v: number) => void
+  value: number;
+  onChange: (v: number) => void;
 }) {
   return (
     <div className="flex flex-col items-center gap-8">
@@ -318,17 +282,23 @@ function StepAge({
           This Helps Us Create Your Personalized Plan
         </p>
       </div>
-      <ScrollPicker value={value} onChange={onChange} min={10} max={100} unit="Years Old" />
+      <ScrollPicker
+        value={value}
+        onChange={onChange}
+        min={10}
+        max={100}
+        unit="Years Old"
+      />
     </div>
-  )
+  );
 }
 
 function StepWeight({
   value,
   onChange,
 }: {
-  value: number
-  onChange: (v: number) => void
+  value: number;
+  onChange: (v: number) => void;
 }) {
   return (
     <div className="flex flex-col items-center gap-8">
@@ -340,17 +310,23 @@ function StepWeight({
           This Helps Us Create Your Personalized Plan
         </p>
       </div>
-      <ScrollPicker value={value} onChange={onChange} min={30} max={200} unit="Kg" />
+      <ScrollPicker
+        value={value}
+        onChange={onChange}
+        min={30}
+        max={200}
+        unit="Kg"
+      />
     </div>
-  )
+  );
 }
 
 function StepHeight({
   value,
   onChange,
 }: {
-  value: number
-  onChange: (v: number) => void
+  value: number;
+  onChange: (v: number) => void;
 }) {
   return (
     <div className="flex flex-col items-center gap-8">
@@ -362,17 +338,23 @@ function StepHeight({
           This Helps Us Create Your Personalized Plan
         </p>
       </div>
-      <ScrollPicker value={value} onChange={onChange} min={100} max={250} unit="Cm" />
+      <ScrollPicker
+        value={value}
+        onChange={onChange}
+        min={100}
+        max={250}
+        unit="Cm"
+      />
     </div>
-  )
+  );
 }
 
 function StepGoal({
   value,
   onChange,
 }: {
-  value: string
-  onChange: (v: string) => void
+  value: string;
+  onChange: (v: string) => void;
 }) {
   return (
     <div className="flex w-full flex-col items-center gap-6">
@@ -403,28 +385,28 @@ function StepGoal({
             <span
               className={cn(
                 "flex h-4 w-4 items-center justify-center rounded-full border",
-                value === goal ? "border-primary bg-primary" : "border-muted-foreground",
+                value === goal
+                  ? "border-primary bg-primary"
+                  : "border-muted-foreground",
               )}
             >
               {value === goal && (
-                <svg width="8" height="8" viewBox="0 0 8 8" fill="white">
-                  <circle cx="4" cy="4" r="3" />
-                </svg>
+                <Circle size={8} fill="white" strokeWidth={0} />
               )}
             </span>
           </button>
         ))}
       </div>
     </div>
-  )
+  );
 }
 
 function StepActivity({
   value,
   onChange,
 }: {
-  value: string
-  onChange: (v: string) => void
+  value: string;
+  onChange: (v: string) => void;
 }) {
   return (
     <div className="flex w-full flex-col items-center gap-6">
@@ -464,22 +446,24 @@ function StepActivity({
               )}
             >
               {value === lvl.value && (
-                <svg width="8" height="8" viewBox="0 0 8 8" fill="white">
-                  <circle cx="4" cy="4" r="3" />
-                </svg>
+                <Circle size={8} fill="white" strokeWidth={0} />
               )}
             </span>
           </button>
         ))}
       </div>
     </div>
-  )
+  );
 }
 
 // ─── Main Wizard ──────────────────────────────────────────────────────────────
 
-export function KycWizard({ onComplete, initialData, className }: KycWizardProps) {
-  const [step, setStep] = useState(1)
+export function KycWizard({
+  onComplete,
+  initialData,
+  className,
+}: KycWizardProps) {
+  const [step, setStep] = useState(1);
   const [data, setData] = useState<KycData>({
     gender: initialData?.gender ?? "male",
     age: initialData?.age ?? 25,
@@ -487,26 +471,26 @@ export function KycWizard({ onComplete, initialData, className }: KycWizardProps
     height: initialData?.height ?? 170,
     goal: initialData?.goal ?? "",
     activityLevel: initialData?.activityLevel ?? "",
-  })
+  });
 
   const patch = <K extends keyof KycData>(key: K, val: KycData[K]) =>
-    setData((prev) => ({ ...prev, [key]: val }))
+    setData((prev) => ({ ...prev, [key]: val }));
 
   const canNext = (): boolean => {
-    if (step === 1) return data.gender !== ("" as string)
-    if (step === 5) return data.goal !== ""
-    if (step === 6) return data.activityLevel !== ""
-    return true
-  }
+    if (step === 1) return data.gender !== ("" as string);
+    if (step === 5) return data.goal !== "";
+    if (step === 6) return data.activityLevel !== "";
+    return true;
+  };
 
   const next = () => {
-    if (step < TOTAL_STEPS) setStep((s) => s + 1)
-    else onComplete(data)
-  }
+    if (step < TOTAL_STEPS) setStep((s) => s + 1);
+    else onComplete(data);
+  };
 
-  const back = () => setStep((s) => Math.max(1, s - 1))
+  const back = () => setStep((s) => Math.max(1, s - 1));
 
-  const buttonLabel = step === TOTAL_STEPS ? "Done" : step === 3 ? "Done" : "Next"
+  const buttonLabel = step === TOTAL_STEPS ? "Done" : "Next";
 
   return (
     <div
@@ -522,16 +506,25 @@ export function KycWizard({ onComplete, initialData, className }: KycWizardProps
         {/* Step content */}
         <div className="flex w-full flex-col items-center">
           {step === 1 && (
-            <StepGender value={data.gender} onChange={(v) => patch("gender", v)} />
+            <StepGender
+              value={data.gender}
+              onChange={(v) => patch("gender", v)}
+            />
           )}
           {step === 2 && (
             <StepAge value={data.age} onChange={(v) => patch("age", v)} />
           )}
           {step === 3 && (
-            <StepWeight value={data.weight} onChange={(v) => patch("weight", v)} />
+            <StepWeight
+              value={data.weight}
+              onChange={(v) => patch("weight", v)}
+            />
           )}
           {step === 4 && (
-            <StepHeight value={data.height} onChange={(v) => patch("height", v)} />
+            <StepHeight
+              value={data.height}
+              onChange={(v) => patch("height", v)}
+            />
           )}
           {step === 5 && (
             <StepGoal value={data.goal} onChange={(v) => patch("goal", v)} />
@@ -574,5 +567,5 @@ export function KycWizard({ onComplete, initialData, className }: KycWizardProps
         )}
       </div>
     </div>
-  )
+  );
 }

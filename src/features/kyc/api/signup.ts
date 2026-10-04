@@ -24,10 +24,10 @@ export async function signup(payload: SignupPayload): Promise<SignupResponse> {
     body: JSON.stringify(payload),
   })
 
-  const data = (await res.json()) as SignupResponse
+  const data = (await res.json()) as SignupResponse & { error?: string }
 
   if (!res.ok) {
-    throw new Error((data as { message?: string }).message ?? "Signup failed")
+    throw new Error(data.error || data.message || "Signup failed")
   }
 
   return data

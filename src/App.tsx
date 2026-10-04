@@ -1,38 +1,33 @@
-import type { ComponentProps, ReactNode } from "react"
-import { useState } from "react"
-import { Eye, Lock, Mail } from "lucide-react"
-import { cn } from "cn"
-import { KycWizard } from "@/components/features/kyc"
-import type { KycData } from "@/components/features/kyc"
-import { signup } from "@/components/features/kyc"
-import { Logo } from "@/components/brand/logo"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import type { ComponentProps, ReactNode } from "react";
+import { useState } from "react";
+import { Eye, Lock, Mail } from "lucide-react";
+import { cn } from "cn";
+import { KycWizard } from "@/features/kyc";
+import type { KycData } from "@/features/kyc";
+import { signup } from "@/features/kyc";
+import { Logo } from "@/components/brand/logo";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel"
-import { Input } from "@/components/ui/input"
+} from "@/components/ui/carousel";
+import { Input } from "@/components/ui/input";
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
-} from "@/components/ui/input-otp"
-import { Separator } from "@/components/ui/separator"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { figmaTokens } from "@/lib/tokens"
-import { toast } from "sonner"
-import { Route, Routes } from "react-router-dom"
-import { ResetPasswordPage } from "@/features/auth"
+} from "@/components/ui/input-otp";
+import { Separator } from "@/components/ui/separator";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { figmaTokens } from "@/lib/tokens";
+import { toast } from "sonner";
+import { Route, Routes } from "react-router-dom";
+import { ResetPasswordPage, SignupPage, LoginPage } from "@/features/auth";
 
 const colors = [
   { name: "Main", hex: figmaTokens.color.main, className: "bg-primary" },
@@ -54,7 +49,7 @@ const colors = [
     className: "bg-secondary border border-border",
   },
   { name: "Input", hex: figmaTokens.color.input, className: "bg-input" },
-]
+];
 
 const typeSamples = [
   {
@@ -90,7 +85,7 @@ const typeSamples = [
     text: "Push harder, go further. Your fitness journey starts today.",
   },
   {
-    label: "CTA 14–16 / ExtraBold",
+    label: "CTA 1416 / ExtraBold",
     className: "font-heading text-sm font-extrabold sm:text-base",
     text: "Confirm",
   },
@@ -104,34 +99,28 @@ const typeSamples = [
     className: "font-heading text-xs font-normal text-font-2",
     text: "Email",
   },
-]
+];
 
 const classes = [
   { title: "Chest Exercise", level: "Beginner" as const },
   { title: "Fat Body", level: "Intermediate" as const },
   { title: "Shoulder", level: "Advanced" as const },
   { title: "Legs", level: "Beginner" as const },
-]
+];
 
 function levelVariant(level: (typeof classes)[number]["level"]) {
-  if (level === "Beginner") return "beginner" as const
-  if (level === "Intermediate") return "intermediate" as const
-  return "advanced" as const
+  if (level === "Beginner") return "beginner" as const;
+  if (level === "Intermediate") return "intermediate" as const;
+  return "advanced" as const;
 }
 
-function Section({
-  title,
-  children,
-}: {
-  title: string
-  children: ReactNode
-}) {
+function Section({ title, children }: { title: string; children: ReactNode }) {
   return (
     <section className="space-y-4">
       <h2 className="text-2xl">{title}</h2>
       {children}
     </section>
-  )
+  );
 }
 
 function IconField({
@@ -139,8 +128,8 @@ function IconField({
   trailing,
   ...props
 }: ComponentProps<typeof Input> & {
-  icon: typeof Mail
-  trailing?: ReactNode
+  icon: typeof Mail;
+  trailing?: ReactNode;
 }) {
   return (
     <div className="relative">
@@ -152,7 +141,7 @@ function IconField({
         </span>
       ) : null}
     </div>
-  )
+  );
 }
 
 // ─── KYC Demo ─────────────────────────────────────────────────────────────────
@@ -167,21 +156,25 @@ const MOCK_SIGNUP = {
   email: `test+${Date.now()}@demo.com`,
   password: "Demo@1234",
   rePassword: "Demo@1234",
-}
+};
 
 function KycDemoSection() {
-  const [phase, setPhase] = useState<"idle" | "kyc" | "loading" | "done" | "error">("idle")
-  const [result, setResult] = useState<{ ok: boolean; message: string } | null>(null)
+  const [phase, setPhase] = useState<
+    "idle" | "kyc" | "loading" | "done" | "error"
+  >("idle");
+  const [result, setResult] = useState<{ ok: boolean; message: string } | null>(
+    null,
+  );
 
   async function handleKycComplete(kyc: KycData) {
-    setPhase("loading")
+    setPhase("loading");
     try {
-      const res = await signup({ ...MOCK_SIGNUP, ...kyc })
-      setResult({ ok: true, message: res.message ?? "Account created!" })
-      setPhase("done")
+      const res = await signup({ ...MOCK_SIGNUP, ...kyc });
+      setResult({ ok: true, message: res.message ?? "Account created!" });
+      setPhase("done");
     } catch (err) {
-      setResult({ ok: false, message: (err as Error).message })
-      setPhase("error")
+      setResult({ ok: false, message: (err as Error).message });
+      setPhase("error");
     }
   }
 
@@ -193,7 +186,8 @@ function KycDemoSection() {
         activity level then POSTs everything to{" "}
         <code className="rounded bg-secondary px-1 text-xs text-primary">
           /api/v1/auth/signup
-        </code>.
+        </code>
+        .
       </p>
 
       {phase === "idle" && (
@@ -231,11 +225,16 @@ function KycDemoSection() {
               : "border-destructive/40 bg-destructive/10 text-destructive",
           )}
         >
-          <p className="font-extrabold">{result.ok ? "✅ Success" : "❌ Error"}</p>
+          <p className="font-extrabold">
+            {result.ok ? "✅ Success" : "❌ Error"}
+          </p>
           <p className="mt-1 text-xs opacity-80">{result.message}</p>
           <button
             type="button"
-            onClick={() => { setPhase("idle"); setResult(null) }}
+            onClick={() => {
+              setPhase("idle");
+              setResult(null);
+            }}
             className="mt-3 underline underline-offset-2 text-xs hover:opacity-70"
           >
             Try again
@@ -243,7 +242,7 @@ function KycDemoSection() {
         </div>
       )}
     </section>
-  )
+  );
 }
 
 export default function App() {
@@ -251,8 +250,11 @@ export default function App() {
     <Routes>
       <Route path="/" element={<DesignSystem />} />
       <Route path="/auth/reset-password" element={<ResetPasswordPage />} />
+      <Route path="/auth/signup" element={<SignupPage />} />
+      <Route path="/signup" element={<SignupPage />} />
+      <Route path="/auth/login" element={<LoginPage />} />
     </Routes>
-  )
+  );
 }
 function DesignSystem() {
   return (
@@ -396,7 +398,11 @@ function DesignSystem() {
               <p className="text-center font-heading text-lg">
                 Enter the OTP you have received
               </p>
-              <InputOTP maxLength={4} id="otp" containerClassName="justify-center">
+              <InputOTP
+                maxLength={4}
+                id="otp"
+                containerClassName="justify-center"
+              >
                 <InputOTPGroup>
                   <InputOTPSlot index={0} />
                   <InputOTPSlot index={1} />
@@ -472,11 +478,24 @@ function DesignSystem() {
 
         <KycDemoSection />
 
+        <Section title="Signup Page">
+          <p className="font-sans text-sm text-muted-foreground mb-4">
+            Full signup flow — form → KYC wizard → POST to{" "}
+            <code className="rounded bg-secondary px-1 text-xs text-primary">
+              /api/v1/auth/signup
+            </code>
+            . Check the console for the logged payload.
+          </p>
+          <div className="rounded-2xl border border-border overflow-hidden">
+            <SignupPage />
+          </div>
+        </Section>
+
         <Separator />
         <footer className="bg-primary px-6 py-4 font-heading text-sm font-medium text-primary-foreground">
           Classes / Outdoor & online trainers / Personal trainers / Live classes
         </footer>
       </main>
     </div>
-  )
+  );
 }
