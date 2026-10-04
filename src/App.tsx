@@ -31,6 +31,8 @@ import { Separator } from "@/components/ui/separator"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { figmaTokens } from "@/lib/tokens"
 import { toast } from "sonner"
+import { Route, Routes } from "react-router-dom"
+import { ResetPasswordPage } from "@/features/auth"
 
 const colors = [
   { name: "Main", hex: figmaTokens.color.main, className: "bg-primary" },
@@ -245,6 +247,14 @@ function KycDemoSection() {
 }
 
 export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<DesignSystem />} />
+      <Route path="/auth/reset-password" element={<ResetPasswordPage />} />
+    </Routes>
+  )
+}
+function DesignSystem() {
   return (
     <div className="min-h-svh bg-background text-foreground">
       <header className="border-b border-border">
