@@ -27,9 +27,12 @@ export async function register({ firstName, lastName, email, password, rePasswor
     body: JSON.stringify({ firstName, lastName, email, password, rePassword, gender, height, weight, age, goal, activityLevel }),
   });
 
+  const data = await res.json().catch(() => null);
+
   // If the request failed, stop here and let the caller show an error
   if (!res.ok) {
-    throw new Error("Failed to register");
+    throw new Error(data?.error || data?.message || "Failed to register");
   }
 
+  return data;
 }
