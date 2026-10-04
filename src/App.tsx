@@ -1,6 +1,10 @@
 import type { ComponentProps, ReactNode } from "react"
+import { useState } from "react"
 import { Eye, Lock, Mail } from "lucide-react"
 import { cn } from "cn"
+import { KycWizard } from "@/components/features/kyc"
+import type { KycData } from "@/components/features/kyc"
+import { signup } from "@/components/features/kyc"
 import { Logo } from "@/components/brand/logo"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -146,6 +150,97 @@ function IconField({
         </span>
       ) : null}
     </div>
+  )
+}
+
+// ─── KYC Demo ─────────────────────────────────────────────────────────────────
+
+/**
+ * Minimal signup form data collected before the KYC wizard.
+ * Your teammate will build the full auth form — this is just for demo/testing.
+ */
+const MOCK_SIGNUP = {
+  firstName: "Elevate",
+  lastName: "Tech",
+  email: `test+${Date.now()}@demo.com`,
+  password: "Demo@1234",
+  rePassword: "Demo@1234",
+}
+
+function KycDemoSection() {
+  const [phase, setPhase] = useState<"idle" | "kyc" | "loading" | "done" | "error">("idle")
+  const [result, setResult] = useState<{ ok: boolean; message: string } | null>(null)
+
+  async function handleKycComplete(kyc: KycData) {
+    setPhase("loading")
+    try {
+      const res = await signup({ ...MOCK_SIGNUP, ...kyc })
+      setResult({ ok: true, message: res.message ?? "Account created!" })
+      setPhase("done")
+    } catch (err) {
+      setResult({ ok: false, message: (err as Error).message })
+      setPhase("error")
+    }
+  }
+
+  return (
+    <section className="space-y-4">
+      <h2 className="text-2xl">KYC Wizard (demo)</h2>
+      <p className="font-sans text-sm text-muted-foreground">
+        Triggered after signup. Collects gender, age, weight, height, goal and
+        activity level then POSTs everything to{" "}
+        <code className="rounded bg-secondary px-1 text-xs text-primary">
+          /api/v1/auth/signup
+        </code>.
+      </p>
+
+      {phase === "idle" && (
+        <button
+          id="kyc-start-btn"
+          type="button"
+          onClick={() => setPhase("kyc")}
+          className="h-12 rounded-full bg-primary px-8 font-heading text-sm font-extrabold text-primary-foreground hover:bg-primary/90 transition-all"
+        >
+          Start KYC flow
+        </button>
+      )}
+
+      {phase === "kyc" && (
+        <div className="flex justify-center">
+          <KycWizard
+            onComplete={handleKycComplete}
+            className="bg-[rgba(36,36,36,0.6)] backdrop-blur-md border border-border"
+          />
+        </div>
+      )}
+
+      {phase === "loading" && (
+        <p className="font-heading text-sm text-muted-foreground animate-pulse">
+          Sending data to server…
+        </p>
+      )}
+
+      {(phase === "done" || phase === "error") && result && (
+        <div
+          className={cn(
+            "max-w-sm rounded-2xl border p-5 font-heading text-sm",
+            result.ok
+              ? "border-primary/40 bg-primary/10 text-foreground"
+              : "border-destructive/40 bg-destructive/10 text-destructive",
+          )}
+        >
+          <p className="font-extrabold">{result.ok ? "✅ Success" : "❌ Error"}</p>
+          <p className="mt-1 text-xs opacity-80">{result.message}</p>
+          <button
+            type="button"
+            onClick={() => { setPhase("idle"); setResult(null) }}
+            className="mt-3 underline underline-offset-2 text-xs hover:opacity-70"
+          >
+            Try again
+          </button>
+        </div>
+      )}
+    </section>
   )
 }
 
@@ -364,6 +459,8 @@ export default function App() {
             </TabsContent>
           </Tabs>
         </Section>
+
+        <KycDemoSection />
 
         <Separator />
         <footer className="bg-primary px-6 py-4 font-heading text-sm font-medium text-primary-foreground">
