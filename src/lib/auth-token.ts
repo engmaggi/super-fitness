@@ -1,13 +1,32 @@
-const AUTH_TOKEN_KEY = "super_fitness_auth_token";
+const TOKEN_KEY = "accessToken"
 
-export function getAuthToken(): string | null {
-  return localStorage.getItem(AUTH_TOKEN_KEY);
+export function getAuthToken() {
+  const cookies = document.cookie.split("; ")
+
+  const tokenCookie = cookies.find((cookie) =>
+    cookie.startsWith(`${TOKEN_KEY}=`),
+  )
+
+  if (!tokenCookie) {
+    return null
+  }
+
+  return decodeURIComponent(tokenCookie.split("=")[1])
 }
 
-export function setAuthToken(token: string): void {
-  localStorage.setItem(AUTH_TOKEN_KEY, token);
+export function setAuthToken(token: string) {
+  document.cookie = [
+    `${TOKEN_KEY}=${encodeURIComponent(token)}`,
+    "Path=/",
+    "SameSite=Lax",
+  ].join("; ")
 }
 
-export function clearAuthToken(): void {
-  localStorage.removeItem(AUTH_TOKEN_KEY);
+export function clearAuthToken() {
+  document.cookie = [
+    `${TOKEN_KEY}=`,
+    "Path=/",
+    "Max-Age=0",
+    "SameSite=Lax",
+  ].join("; ")
 }

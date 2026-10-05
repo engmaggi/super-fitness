@@ -41,6 +41,7 @@ export const ar = {
     noAccountYet: "ليس لديك حساب بعد؟",
     alreadyHaveAccount: "هل لديك حساب بالفعل؟",
     registerSuccess: "تم إنشاء الحساب! أهلًا بك.",
+    loginSuccess: "تم تسجيل الدخول بنجاح.",
     errors: {
       firstNameRequired: "الاسم الأول مطلوب",
       lastNameRequired: "اسم العائلة مطلوب",
@@ -66,6 +67,8 @@ export const ar = {
       invalidInputs: "يرجى مراجعة الحقول والمحاولة مرة أخرى.",
       userAlreadyExists: "المستخدم موجود بالفعل",
       signupFailed: "فشل إنشاء الحساب. يرجى المحاولة مرة أخرى.",
+      loginFailed: "فشل تسجيل الدخول. يرجى المحاولة مرة أخرى.",
+      incorrectCredentials: "البريد الإلكتروني أو كلمة المرور غير صحيحة.",
       resetPasswordFailed: "فشل إعادة تعيين كلمة المرور. يرجى المحاولة مرة أخرى.",
       changePasswordFailed: "فشل تغيير كلمة المرور. يرجى المحاولة مرة أخرى.",
       notAuthenticated: "يجب تسجيل الدخول لتغيير كلمة المرور.",

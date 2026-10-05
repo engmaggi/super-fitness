@@ -41,6 +41,7 @@ export const en = {
     noAccountYet: "Dont have an account yet ?",
     alreadyHaveAccount: "Already Have an account ?",
     registerSuccess: "Account created! Welcome aboard.",
+    loginSuccess: "Logged in successfully.",
     errors: {
       firstNameRequired: "First name is required",
       lastNameRequired: "Last name is required",
@@ -66,6 +67,8 @@ export const en = {
       invalidInputs: "Please check the fields and try again.",
       userAlreadyExists: "User already exists",
       signupFailed: "Registration failed. Please try again.",
+      loginFailed: "Login failed. Please try again.",
+      incorrectCredentials: "Incorrect email or password.",
       resetPasswordFailed: "Failed to reset password. Please try again.",
       changePasswordFailed: "Failed to change password. Please try again.",
       notAuthenticated: "You must be logged in to change your password.",
