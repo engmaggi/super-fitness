@@ -30,6 +30,7 @@ export const ar = {
     or: "أو",
     noAccountYet: "ليس لديك حساب بعد؟",
     alreadyHaveAccount: "هل لديك حساب بالفعل؟",
+    registerSuccess: "تم إنشاء الحساب! أهلًا بك.",
     errors: {
       firstNameRequired: "الاسم الأول مطلوب",
       lastNameRequired: "اسم العائلة مطلوب",
@@ -52,6 +53,8 @@ export const ar = {
       ageInvalid: "السن يجب أن يكون رقمًا أكبر من صفر",
       goalRequired: "الهدف مطلوب",
       activityLevelRequired: "مستوى النشاط مطلوب",
+      userAlreadyExists: "المستخدم موجود بالفعل",
+      signupFailed: "فشل إنشاء الحساب. يرجى المحاولة مرة أخرى.",
     },
   },
   onboarding: {
@@ -63,5 +66,53 @@ export const ar = {
     moreFlexible: "زيادة المرونة",
     learnBasics: "تعلّم الأساسيات",
     next: "التالي",
+  },
+  kyc: {
+    next: "التالي",
+    done: "تم",
+    back: "رجوع",
+    gender: {
+      title: "أخبرنا عن نفسك!",
+      subtitle: "نحتاج إلى معرفة جنسك",
+      male: "ذكر",
+      female: "أنثى",
+    },
+    age: {
+      title: "كم عمرك؟",
+      subtitle: "يساعدنا هذا في إنشاء خطتك المخصصة",
+      unit: "سنة",
+    },
+    weight: {
+      title: "ما وزنك؟",
+      subtitle: "يساعدنا هذا في إنشاء خطتك المخصصة",
+      unit: "كجم",
+    },
+    height: {
+      title: "ما طولك؟",
+      subtitle: "يساعدنا هذا في إنشاء خطتك المخصصة",
+      unit: "سم",
+    },
+    goal: {
+      title: "ما هدفك؟",
+      subtitle: "يساعدنا هذا في إنشاء خطتك المخصصة",
+      options: {
+        gainWeight: "زيادة الوزن",
+        loseWeight: "إنقاص الوزن",
+        getFitter: "تحسين اللياقة",
+        moreFlexible: "زيادة المرونة",
+        learnBasics: "تعلّم الأساسيات",
+      },
+    },
+    activity: {
+      title: "مستوى النشاط",
+      subtitle: "ما مدى نشاطك في يوم عادي؟",
+      levels: {
+        level1: { label: "مبتدئ", description: "لا يوجد تمرين أو نادرًا" },
+        level2: { label: "ناشئ", description: "تمرين خفيف 1-3 أيام/أسبوع" },
+        level3: { label: "متوسط", description: "تمرين معتدل 3-5 أيام/أسبوع" },
+        level4: { label: "متقدم", description: "تمرين شاق 6-7 أيام/أسبوع" },
+        level5: { label: "محترف", description: "تمرين مكثف جدًا وعمل بدني" },
+      },
+    },
   },
 } as const

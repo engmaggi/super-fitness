@@ -30,6 +30,7 @@ export const en = {
     or: "Or",
     noAccountYet: "Dont have an account yet ?",
     alreadyHaveAccount: "Already Have an account ?",
+    registerSuccess: "Account created! Welcome aboard.",
     errors: {
       firstNameRequired: "First name is required",
       lastNameRequired: "Last name is required",
@@ -52,6 +53,8 @@ export const en = {
       ageInvalid: "Age must be a number greater than 0",
       goalRequired: "Goal is required",
       activityLevelRequired: "Activity level is required",
+      userAlreadyExists: "User already exists",
+      signupFailed: "Registration failed. Please try again.",
     },
   },
   onboarding: {
@@ -63,5 +66,53 @@ export const en = {
     moreFlexible: "Gain more flexible",
     learnBasics: "Learn the basic",
     next: "Next",
+  },
+  kyc: {
+    next: "Next",
+    done: "Done",
+    back: "Back",
+    gender: {
+      title: "Tell Us About Yourself!",
+      subtitle: "We Need To Know Your Gender",
+      male: "Male",
+      female: "Female",
+    },
+    age: {
+      title: "How Old Are You?",
+      subtitle: "This Helps Us Create Your Personalized Plan",
+      unit: "Years Old",
+    },
+    weight: {
+      title: "What Is Your Weight?",
+      subtitle: "This Helps Us Create Your Personalized Plan",
+      unit: "Kg",
+    },
+    height: {
+      title: "What Is Your Height?",
+      subtitle: "This Helps Us Create Your Personalized Plan",
+      unit: "Cm",
+    },
+    goal: {
+      title: "What Is Your Goal?",
+      subtitle: "This Helps Us Create Your Personalized Plan",
+      options: {
+        gainWeight: "Gain weight",
+        loseWeight: "Lose weight",
+        getFitter: "Get fitter",
+        moreFlexible: "Gain more flexible",
+        learnBasics: "Learn the basic",
+      },
+    },
+    activity: {
+      title: "Activity Level",
+      subtitle: "How Active Are You On A Typical Day?",
+      levels: {
+        level1: { label: "Rookie", description: "Little or no exercise" },
+        level2: { label: "Beginner", description: "Light exercise 1-3 days/week" },
+        level3: { label: "Intermediate", description: "Moderate exercise 3-5 days/week" },
+        level4: { label: "Advance", description: "Hard exercise 6-7 days/week" },
+        level5: { label: "True Beast", description: "Very hard exercise & physical job" },
+      },
+    },
   },
 } as const

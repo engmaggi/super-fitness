@@ -21,15 +21,18 @@ export async function register({ firstName, lastName, email, password, rePasswor
   // await apiClient.post(`${BASE_URL}/auth/resetPassword`, { email, newPassword })
 
   // Send the new password to the backend
-  const res = await fetch(`${BASE_URL}/auth/signup`, {
+  const res = await fetch(`${BASE_URL}/v1/auth/signup`, {
     method: "POST", 
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ firstName, lastName, email, password, rePassword, gender, height, weight, age, goal, activityLevel }),
   });
 
+  const data = await res.json().catch(() => null);
+
   // If the request failed, stop here and let the caller show an error
   if (!res.ok) {
-    throw new Error("Failed to register");
+    throw new Error(data?.error || data?.message || "Failed to register");
   }
 
+  return data;
 }

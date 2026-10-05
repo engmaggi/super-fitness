@@ -1,7 +1,6 @@
 
 import authBg from "@/assets/auth-bg.webp"
 import authImage from "@/features/auth/assets/auth-side-img.webp"
-import { Eye, Mail, Lock } from "lucide-react";
 import { Outlet } from "react-router-dom";
 
 // function IconField({
