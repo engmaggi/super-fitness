@@ -1,0 +1,32 @@
+---
+description: Feature-based architecture and custom auth (no NextAuth)
+alwaysApply: true
+---
+
+# Super Fitness architecture
+
+Vite + React + TypeScript. Not Next.js.
+
+## Feature-based
+
+Group by feature, not by type (`pages/`, `layouts/`, `components/` as global buckets).
+
+```
+src/features/auth/
+  components/     # AuthLayout, form pieces used only by auth
+  pages/          # LoginPage, RegisterPage, ...
+  api/            # axios calls for this feature
+  hooks/
+  types/
+```
+
+Shared UI stays in `src/components/ui` (shadcn). Shared tokens in `src/lib`.
+A route file may compose features; it must not own feature UI.
+
+## Auth is custom
+
+Do not use NextAuth, Auth.js, Clerk, or an `AuthProvider` / session provider.
+
+- Login / register / OTP talk to the API with axios
+- Session is a token you store and attach to requests (interceptor), not React context wrapping the tree
+- `AuthLayout` is a visual shell (background + brand column + `Outlet`), not an auth state provider
