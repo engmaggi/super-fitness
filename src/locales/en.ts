@@ -13,6 +13,7 @@ export const en = {
     login: "Login",
     logout: "Logout",
     loggedOut: "Logged out successfully",
+    openMenu: "Open navigation menu",
   },
   auth: {
     greeting: "Hey there",

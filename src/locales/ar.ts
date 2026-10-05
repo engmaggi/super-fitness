@@ -13,6 +13,7 @@ export const ar = {
     login: "تسجيل الدخول",
     logout: "تسجيل الخروج",
     loggedOut: "تم تسجيل الخروج بنجاح",
+    openMenu: "فتح قائمة التنقل",
   },
   auth: {
     greeting: "أهلًا بك",
