@@ -74,7 +74,7 @@ export default function RegisterForm() {
     try {
       await register(data);
       toast.success(t("auth.registerSuccess"));
-      navigate("/login");
+      navigate("/");
     } catch (err) {
       const message = err instanceof Error ? err.message : "";
       if (
