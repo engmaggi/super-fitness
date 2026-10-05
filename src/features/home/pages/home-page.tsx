@@ -1,7 +1,7 @@
 export default function HomePage() {
   return (
-    <main className="flex min-h-svh items-center justify-center bg-background text-foreground">
+    <div className="flex flex-1 items-center justify-center py-24">
       <h1 className="font-heading text-page-title">Home</h1>
-    </main>
+    </div>
   );
 }

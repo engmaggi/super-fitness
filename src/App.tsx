@@ -4,12 +4,31 @@ import RegisterPage from "@/features/auth/pages/register";
 import DesignPage from "@/features/design-system/pages/design";
 import HomePage from "@/features/home/pages/home-page";
 import LocaleLayout from "@/components/locale-layout";
+import MainLayout from "@/components/main-layout";
 import ResetPasswordPage from "./features/auth/pages/reset-password-page";
 import LoginPage from "./features/auth/pages/login-page";
 
+function PlaceholderPage({ title }: { title: string }) {
+  return (
+    <div className="flex flex-1 flex-col items-center justify-center p-8 py-24">
+      <h1 className="font-heading text-page-title">{title}</h1>
+      <p className="mt-2 text-muted-foreground font-sans text-base">Coming soon</p>
+    </div>
+  );
+}
+
 function pages(): RouteObject[] {
   return [
-    { index: true, element: <HomePage /> },
+    {
+      element: <MainLayout />,
+      children: [
+        { index: true, element: <HomePage /> },
+        { path: "about", element: <PlaceholderPage title="About" /> },
+        { path: "classes", element: <PlaceholderPage title="Classes" /> },
+        { path: "healthy", element: <PlaceholderPage title="Healthy" /> },
+        { path: "settings", element: <PlaceholderPage title="Settings" /> },
+      ],
+    },
     { path: "design", element: <DesignPage /> },
     {
       element: <AuthLayout />,

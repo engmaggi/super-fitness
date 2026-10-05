@@ -4,6 +4,16 @@ export const en = {
     english: "English",
     arabic: "Arabic",
   },
+  nav: {
+    home: "Home",
+    about: "About",
+    classes: "Classes",
+    healthy: "Healthy",
+    settings: "Settings",
+    login: "Login",
+    logout: "Logout",
+    loggedOut: "Logged out successfully",
+  },
   auth: {
     greeting: "Hey there",
     welcomeBack: "Welcome back",

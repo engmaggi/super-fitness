@@ -4,6 +4,16 @@ export const ar = {
     english: "الإنجليزية",
     arabic: "العربية",
   },
+  nav: {
+    home: "الرئيسية",
+    about: "من نحن",
+    classes: "التمارين",
+    healthy: "الصحة",
+    settings: "الإعدادات",
+    login: "تسجيل الدخول",
+    logout: "تسجيل الخروج",
+    loggedOut: "تم تسجيل الخروج بنجاح",
+  },
   auth: {
     greeting: "أهلًا بك",
     welcomeBack: "مرحبًا بعودتك",
@@ -45,10 +55,13 @@ export const ar = {
       emailInvalid: "البريد الإلكتروني غير صحيح",
       passwordRequired: "كلمة المرور مطلوبة",
       passwordMin: "كلمة المرور يجب أن تكون 8 أحرف على الأقل",
-      passwordUppercase: "كلمة المرور يجب أن تحتوي على حرف كبير واحد على الأقل (A-Z)",
-      passwordLowercase: "كلمة المرور يجب أن تحتوي على حرف صغير واحد على الأقل (a-z)",
+      passwordUppercase:
+        "كلمة المرور يجب أن تحتوي على حرف كبير واحد على الأقل (A-Z)",
+      passwordLowercase:
+        "كلمة المرور يجب أن تحتوي على حرف صغير واحد على الأقل (a-z)",
       passwordDigit: "كلمة المرور يجب أن تحتوي على رقم واحد على الأقل (0-9)",
-      passwordSpecial: "كلمة المرور يجب أن تحتوي على علامة خاصة واحدة على الأقل (مثل @$!%*?&)",
+      passwordSpecial:
+        "كلمة المرور يجب أن تحتوي على علامة خاصة واحدة على الأقل (مثل @$!%*?&)",
       rePasswordRequired: "إعادة إدخال كلمة المرور مطلوبة",
       passwordsDoNotMatch: "كلمتا المرور غير متطابقتين",
       genderRequired: "النوع مطلوب",
@@ -63,7 +76,8 @@ export const ar = {
       invalidInputs: "يرجى مراجعة الحقول والمحاولة مرة أخرى.",
       userAlreadyExists: "المستخدم موجود بالفعل",
       signupFailed: "فشل إنشاء الحساب. يرجى المحاولة مرة أخرى.",
-      resetPasswordFailed: "فشل إعادة تعيين كلمة المرور. يرجى المحاولة مرة أخرى.",
+      resetPasswordFailed:
+        "فشل إعادة تعيين كلمة المرور. يرجى المحاولة مرة أخرى.",
     },
   },
   onboarding: {
@@ -124,4 +138,4 @@ export const ar = {
       },
     },
   },
-} as const
+} as const;
