@@ -1,3 +1,5 @@
+import i18n from "@/lib/i18n";
+
 // Base URL for the API
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -20,7 +22,7 @@ export async function resetPassword({ email, newPassword }: ResetPasswordPayload
 
   // If the request failed, stop here and let the caller show an error
   if (!res.ok) {
-    throw new Error("Failed to reset password");
+    throw new Error(i18n.t("auth.errors.resetPasswordFailed"));
   }
 
 }

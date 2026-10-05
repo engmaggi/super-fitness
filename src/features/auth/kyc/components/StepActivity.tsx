@@ -47,10 +47,10 @@ export function StepActivity({
             )}
           >
             <div>
-              <p className="font-heading text-sm font-semibold">
+              <p className="font-heading text-sm font-semibold rtl:text-right">
                 {t(`kyc.activity.levels.${key}.label`)}
               </p>
-              <p className="font-sans text-xs opacity-70">
+              <p className="font-sans text-xs opacity-70 rtl:text-right">
                 {t(`kyc.activity.levels.${key}.description`)}
               </p>
             </div>

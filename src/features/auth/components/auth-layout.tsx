@@ -47,17 +47,16 @@ export default function AuthLayout() {
       <div className="relative z-10 flex flex-col items-center justify-center bg-foreground w-full py-20 px-auto">
        
       </div>
-      <div className="relative z-10 flex items-center justify-center w-full  bg-background/60 backdrop-blur-xl">
-       
-        <div className="flex flex-col items-center justify-center w-1/2 mx-auto my-auto pt-40 pb-40 border-r-2 border-primary/20 drop-shadow-[0_4px_79.8px_rgba(0,0,0,0.25)] bg-background/20 ">
+      <div className="relative z-10 flex w-full flex-col items-center justify-center bg-background/60 backdrop-blur-xl xl:flex-row xl:rtl:flex-row-reverse">
+        <div className="flex w-full flex-col items-center justify-center border-b-2 border-primary/20 bg-background/20 py-16 drop-shadow-[0_4px_79.8px_rgba(0,0,0,0.25)] xl:w-1/2 xl:border-e-2 xl:border-b-0 xl:py-40">
           <img
             src={authImage}
             alt="Auth Layout"
-            className="object-cover w-full max-w-[89.5%]"
+            className="w-full max-w-[89.5%] object-cover"
           />
         </div>
-        <div className=" flex flex-col items-center justify-center w-1/2 mx-auto my-auto text-center">
-         <Outlet />
+        <div className="flex w-full flex-col items-center justify-center py-10 text-center xl:w-1/2 xl:py-0">
+          <Outlet />
         </div>
       </div>
 

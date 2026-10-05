@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Field, FieldError, FieldGroup } from "@/components/ui/field";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
+import { useLocalePath } from "@/lib/use-locale-path";
 import { Separator } from "@/components/ui/separator";
 import facebookIcon from "@/assets/icons/fb-vector.svg";
 import googleIcon from "@/assets/icons/Google-vector.svg";
@@ -20,6 +21,7 @@ import { register } from "../api/register";
 export default function RegisterForm() {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const localePath = useLocalePath();
   //states
   const [isLoading, setIsLoading] = useState(false);
   // Show/hide toggles
@@ -74,7 +76,7 @@ export default function RegisterForm() {
     try {
       await register(data);
       toast.success(t("auth.registerSuccess"));
-      navigate("/");
+      navigate(localePath("/"));
     } catch (err) {
       const message = err instanceof Error ? err.message : "";
       if (
@@ -83,7 +85,8 @@ export default function RegisterForm() {
       ) {
         toast.error(t("auth.errors.userAlreadyExists"));
       } else {
-        toast.error(message || t("auth.errors.signupFailed"));
+        console.error(err);
+        toast.error(t("auth.errors.signupFailed"));
       }
     } finally {
       setIsLoading(false);
@@ -119,7 +122,7 @@ export default function RegisterForm() {
           <FieldGroup>
             <Field data-invalid={!!form.formState.errors.firstName}>
               <div className="relative">
-                <User className="pointer-events-none absolute top-1/2 left-4 size-5 -translate-y-1/2 text-font-2" />
+                <User className="pointer-events-none absolute top-1/2 start-4 size-5 -translate-y-1/2 text-font-2" />
                 <Input
                   id="firstName"
                   type="text"
@@ -135,7 +138,7 @@ export default function RegisterForm() {
             </Field>
             <Field data-invalid={!!form.formState.errors.lastName}>
               <div className="relative">
-                <User className="pointer-events-none absolute top-1/2 left-4 size-5 -translate-y-1/2 text-font-2" />
+                <User className="pointer-events-none absolute top-1/2 start-4 size-5 -translate-y-1/2 text-font-2" />
                 <Input
                   id="lastName"
                   type="text"
@@ -151,7 +154,7 @@ export default function RegisterForm() {
             </Field>
             <Field data-invalid={!!form.formState.errors.email}>
               <div className="relative">
-                <Mail className="pointer-events-none absolute top-1/2 left-4 size-5 -translate-y-1/2 text-font-2" />
+                <Mail className="pointer-events-none absolute top-1/2 start-4 size-5 -translate-y-1/2 text-font-2" />
                 <Input
                   id="email"
                   type="email"
@@ -167,7 +170,7 @@ export default function RegisterForm() {
             </Field>
             <Field data-invalid={!!form.formState.errors.password}>
               <div className="relative">
-                <Lock className="pointer-events-none absolute top-1/2 left-4 size-5 -translate-y-1/2 text-font-2" />
+                <Lock className="pointer-events-none absolute top-1/2 start-4 size-5 -translate-y-1/2 text-font-2" />
                 <Input
                   id="password"
                   type={showPassword ? "text" : "password"}
@@ -177,9 +180,9 @@ export default function RegisterForm() {
                 />
                 <button
                   type="button"
-                  className="absolute top-1/2 right-4 -translate-y-1/2 text-font-2"
+                  className="absolute top-1/2 end-4 -translate-y-1/2 text-font-2"
                   onClick={() => setShowPassword((current) => !current)}
-                  aria-label={showPassword ? "Hide password" : "Show password"}
+                  aria-label={showPassword ? t("auth.hidePassword") : t("auth.showPassword")}
                 >
                   {showPassword ? (
                     <EyeOff className="size-5" />
@@ -195,7 +198,7 @@ export default function RegisterForm() {
             </Field>
             <Field data-invalid={!!form.formState.errors.rePassword}>
               <div className="relative">
-                <Lock className="pointer-events-none absolute top-1/2 left-4 size-5 -translate-y-1/2 text-font-2" />
+                <Lock className="pointer-events-none absolute top-1/2 start-4 size-5 -translate-y-1/2 text-font-2" />
                 <Input
                   id="rePassword"
                   type={showConfirmPassword ? "text" : "password"}
@@ -205,10 +208,12 @@ export default function RegisterForm() {
                 />
                 <button
                   type="button"
-                  className="absolute top-1/2 right-4 -translate-y-1/2 text-font-2"
+                  className="absolute top-1/2 end-4 -translate-y-1/2 text-font-2"
                   onClick={() => setShowConfirmPassword((current) => !current)}
                   aria-label={
-                    showConfirmPassword ? "Hide password" : "Show password"
+                    showConfirmPassword
+                      ? t("auth.hidePassword")
+                      : t("auth.showPassword")
                   }
                 >
                   {showConfirmPassword ? (
@@ -226,9 +231,10 @@ export default function RegisterForm() {
           </FieldGroup>
           <div className="flex justify-end mb-6">
             <Button
+            type="button"
               className="text-base leading-140 cursor-pointer font-bold"
               variant="link"
-              onClick={() => navigate("/auth/reset-password")}
+              onClick={() => navigate(localePath("/auth/reset-password"))}
             >
               {t("auth.forgetPassword")}
             </Button>
@@ -271,7 +277,7 @@ export default function RegisterForm() {
             <Button
               className="text-base leading-140 cursor-pointer"
               variant="link-accent"
-              onClick={() => navigate("/login")}
+              onClick={() => navigate(localePath("/login"))}
             >
               {t("auth.login")}
             </Button>

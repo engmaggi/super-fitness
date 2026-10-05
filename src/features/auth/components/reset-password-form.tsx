@@ -1,11 +1,13 @@
 import { useState, type SyntheticEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { passwordSchema } from "../utils/password-schema";
+import { createPasswordSchema } from "../utils/password-schema";
 import { resetPassword } from "../api/reset-password";
 import { EyeOff, Eye, Lock } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useLocalePath } from "@/lib/use-locale-path";
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
 
 type CreatePasswordFormProps = {
   email: string;
@@ -13,7 +15,9 @@ type CreatePasswordFormProps = {
 type FormErrors = { password?: string; confirmPassword?: string; form?: string };
 
 function ResetPasswordForm({ email }: CreatePasswordFormProps) {
+    const { t } = useTranslation();
     const navigate = useNavigate();
+    const localePath = useLocalePath();
   // The actual values the user types
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -29,7 +33,7 @@ function ResetPasswordForm({ email }: CreatePasswordFormProps) {
   const [serverError, setServerError] = useState("");
 
   // Re-run validation on every render, so errors always match the latest input
-  const result = passwordSchema.safeParse({ password, confirmPassword });
+  const result = createPasswordSchema(t).safeParse({ password, confirmPassword });
   const errors: FormErrors = {};
   if (!result.success) {
     for (const issue of result.error.issues) {
@@ -46,33 +50,35 @@ function ResetPasswordForm({ email }: CreatePasswordFormProps) {
     try {
       setServerError("");
       await resetPassword({ email, newPassword: password });
-       toast.success("Password updated! Please log in.");
-        navigate("/auth/login"); // redirect to login after success
+       toast.success(t("auth.passwordUpdated"));
+        navigate(localePath("/login"));
     } catch (err) {
-      setServerError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+      setServerError(
+        err instanceof Error ? err.message : t("auth.errors.resetPasswordFailed"),
+      );
     }
   }
 
   return (
       <div className="flex flex-col gap-6 justify-center w-140 align-middle mx-auto px-6 py-30">
-      <h1 className="font-extrabold text-5xl">Create New Password</h1>
+      <h1 className="font-extrabold text-5xl">{t("auth.createNewPassword")}</h1>
 
       <div className="border border-chart-2 rounded-4xl p-10 flex flex-col gap-4">
-        <h3 className="text-[22px] text-foreground">Make sure to create a strong password!</h3>
+        <h3 className="text-[22px] text-foreground">{t("auth.strongPasswordHint")}</h3>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           {/* Password field */}
           <div className="flex flex-col gap-1">
             <div className="relative">
-              <Lock className="pointer-events-none absolute top-1/2 left-4 size-5 -translate-y-1/2 text-font-2" />
+              <Lock className="pointer-events-none absolute top-1/2 start-4 size-5 -translate-y-1/2 text-font-2" />
               <Input
-                className="normal-case pr-10 pl-11"
+                className="normal-case pe-10 ps-11"
                 type={showPassword ? "text" : "password"}
-                placeholder="New Password"
+                placeholder={t("auth.newPassword")}
                 value={password}
                 onChange={(e) => {
                   setPassword(e.target.value);
-                  setTouched((t) => ({ ...t, password: true }));
+                  setTouched((current) => ({ ...current, password: true }));
                 }}
                 // stop phones/extensions from auto-capitalizing or "fixing" the password
                 autoCapitalize="off"
@@ -82,8 +88,8 @@ function ResetPasswordForm({ email }: CreatePasswordFormProps) {
               <button
                 type="button" 
                 onClick={() => setShowPassword(!showPassword)}
-                aria-label={showPassword ? "Hide password" : "Show password"}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground"
+                aria-label={showPassword ? t("auth.hidePassword") : t("auth.showPassword")}
+                className="absolute end-3 top-1/2 -translate-y-1/2 text-muted-foreground"
               >
                 {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
               </button>
@@ -96,15 +102,15 @@ function ResetPasswordForm({ email }: CreatePasswordFormProps) {
           {/* Confirm password field  */}
           <div className="flex flex-col gap-1 mb-2">
             <div className="relative">
-              <Lock className="pointer-events-none absolute top-1/2 left-4 size-5 -translate-y-1/2 text-font-2" />
+              <Lock className="pointer-events-none absolute top-1/2 start-4 size-5 -translate-y-1/2 text-font-2" />
               <Input
-                className="normal-case pr-10 pl-11"
+                className="normal-case pe-10 ps-11"
                 type={showConfirmPassword ? "text" : "password"}
-                placeholder="Confirm New Password"
+                placeholder={t("auth.confirmNewPassword")}
                 value={confirmPassword}
                 onChange={(e) => {
                   setConfirmPassword(e.target.value);
-                  setTouched((t) => ({ ...t, confirmPassword: true }));
+                  setTouched((current) => ({ ...current, confirmPassword: true }));
                 }}
                 autoCapitalize="off"
                 autoCorrect="off"
@@ -113,8 +119,10 @@ function ResetPasswordForm({ email }: CreatePasswordFormProps) {
               <button
                 type="button"
                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                aria-label={showConfirmPassword ? "Hide password" : "Show password"}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground"
+                aria-label={
+                  showConfirmPassword ? t("auth.hidePassword") : t("auth.showPassword")
+                }
+                className="absolute end-3 top-1/2 -translate-y-1/2 text-muted-foreground"
               >
                 {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
               </button>
@@ -129,7 +137,7 @@ function ResetPasswordForm({ email }: CreatePasswordFormProps) {
             <p className="text-sm font-medium text-destructive">{serverError}</p>
           )}
 
-          <Button type="submit" variant="default">Reset Password</Button>
+          <Button type="submit" variant="cta">{t("auth.resetPassword")}</Button>
         </form>
       </div>
     </div>

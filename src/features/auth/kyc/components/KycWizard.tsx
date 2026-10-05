@@ -106,7 +106,7 @@ export function KycWizard({
           id="kyc-top-back-btn"
           onClick={back}
           aria-label={t("kyc.back")}
-          className="absolute top-6 left-6 flex size-9 items-center justify-center rounded-full text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors cursor-pointer"
+          className="absolute top-6 left-6 flex size-9 items-center justify-center rounded-full text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors cursor-pointer rtl:right-6 rtl:left-auto"
         >
           <ChevronLeft className="size-5 rtl:rotate-180" />
         </button>
