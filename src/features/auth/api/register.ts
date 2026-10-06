@@ -17,8 +17,7 @@ type RegisterPayload = {
 };
 
 export async function register({ firstName, lastName, email, password, rePassword, gender, height, weight, age, goal, activityLevel }: RegisterPayload) {
-  // TODO: swap this fetch for the shared axios instance once it's ready
-  // await apiClient.post(`${BASE_URL}/auth/resetPassword`, { email, newPassword })
+ 
 
   // Send the new password to the backend
   const res = await fetch(`${BASE_URL}/v1/auth/signup`, {
