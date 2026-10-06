@@ -70,9 +70,7 @@ export const ar = {
       loginFailed: "فشل تسجيل الدخول. يرجى المحاولة مرة أخرى.",
       incorrectCredentials: "البريد الإلكتروني أو كلمة المرور غير صحيحة.",
       resetPasswordFailed: "فشل إعادة تعيين كلمة المرور. يرجى المحاولة مرة أخرى.",
-      changePasswordFailed: "فشل تغيير كلمة المرور. يرجى المحاولة مرة أخرى.",
-      notAuthenticated: "يجب تسجيل الدخول لتغيير كلمة المرور.",
-      newPasswordSameAsCurrent: "يجب أن تكون كلمة المرور الجديدة مختلفة عن الحالية.",
+
     },
   },
   onboarding: {

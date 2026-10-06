@@ -70,9 +70,7 @@ export const en = {
       loginFailed: "Login failed. Please try again.",
       incorrectCredentials: "Incorrect email or password.",
       resetPasswordFailed: "Failed to reset password. Please try again.",
-      changePasswordFailed: "Failed to change password. Please try again.",
-      notAuthenticated: "You must be logged in to change your password.",
-      newPasswordSameAsCurrent: "New password must be different from your current password.",
+
     },
   },
   onboarding: {
