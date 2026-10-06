@@ -122,7 +122,7 @@ export default function RegisterForm() {
           <FieldGroup>
             <Field data-invalid={!!form.formState.errors.firstName}>
               <div className="relative">
-                <User className="pointer-events-none absolute top-1/2 start-4 size-5 -translate-y-1/2 text-font-2" />
+                <User className="pointer-events-none absolute top-1/2 inset-s-4 size-5 -translate-y-1/2 text-font-2" />
                 <Input
                   id="firstName"
                   type="text"
@@ -138,7 +138,7 @@ export default function RegisterForm() {
             </Field>
             <Field data-invalid={!!form.formState.errors.lastName}>
               <div className="relative">
-                <User className="pointer-events-none absolute top-1/2 start-4 size-5 -translate-y-1/2 text-font-2" />
+                <User className="pointer-events-none absolute top-1/2 inset-s-4 size-5 -translate-y-1/2 text-font-2" />
                 <Input
                   id="lastName"
                   type="text"
@@ -154,7 +154,7 @@ export default function RegisterForm() {
             </Field>
             <Field data-invalid={!!form.formState.errors.email}>
               <div className="relative">
-                <Mail className="pointer-events-none absolute top-1/2 start-4 size-5 -translate-y-1/2 text-font-2" />
+                <Mail className="pointer-events-none absolute top-1/2 inset-s-4 size-5 -translate-y-1/2 text-font-2" />
                 <Input
                   id="email"
                   type="email"
@@ -170,7 +170,7 @@ export default function RegisterForm() {
             </Field>
             <Field data-invalid={!!form.formState.errors.password}>
               <div className="relative">
-                <Lock className="pointer-events-none absolute top-1/2 start-4 size-5 -translate-y-1/2 text-font-2" />
+                <Lock className="pointer-events-none absolute top-1/2 inset-s-4 size-5 -translate-y-1/2 text-font-2" />
                 <Input
                   id="password"
                   type={showPassword ? "text" : "password"}
@@ -180,7 +180,7 @@ export default function RegisterForm() {
                 />
                 <button
                   type="button"
-                  className="absolute top-1/2 end-4 -translate-y-1/2 text-font-2"
+                  className="absolute top-1/2 inset-e-4 -translate-y-1/2 text-font-2"
                   onClick={() => setShowPassword((current) => !current)}
                   aria-label={showPassword ? t("auth.hidePassword") : t("auth.showPassword")}
                 >
@@ -198,7 +198,7 @@ export default function RegisterForm() {
             </Field>
             <Field data-invalid={!!form.formState.errors.rePassword}>
               <div className="relative">
-                <Lock className="pointer-events-none absolute top-1/2 start-4 size-5 -translate-y-1/2 text-font-2" />
+                <Lock className="pointer-events-none absolute top-1/2 inset-s-4 size-5 -translate-y-1/2 text-font-2" />
                 <Input
                   id="rePassword"
                   type={showConfirmPassword ? "text" : "password"}
@@ -208,7 +208,7 @@ export default function RegisterForm() {
                 />
                 <button
                   type="button"
-                  className="absolute top-1/2 end-4 -translate-y-1/2 text-font-2"
+                  className="absolute top-1/2 inset-e-4 -translate-y-1/2 text-font-2"
                   onClick={() => setShowConfirmPassword((current) => !current)}
                   aria-label={
                     showConfirmPassword

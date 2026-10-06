@@ -38,6 +38,9 @@ export const en = {
     newPassword: "New Password",
     confirmNewPassword: "Confirm New Password",
     resetPassword: "Reset Password",
+    changePassword: "Change password",
+    changePasswordTitle: "Change password",
+    currentPassword: "Current password",
     passwordUpdated: "Password updated! Please log in.",
     done: "Done",
     otpCode: "OTP CODE",
@@ -49,6 +52,7 @@ export const en = {
     noAccountYet: "Dont have an account yet ?",
     alreadyHaveAccount: "Already Have an account ?",
     registerSuccess: "Account created! Welcome aboard.",
+    loginSuccess: "Logged in successfully.",
     errors: {
       firstNameRequired: "First name is required",
       lastNameRequired: "Last name is required",
@@ -74,7 +78,12 @@ export const en = {
       invalidInputs: "Please check the fields and try again.",
       userAlreadyExists: "User already exists",
       signupFailed: "Registration failed. Please try again.",
+      loginFailed: "Login failed. Please try again.",
+      incorrectCredentials: "Incorrect email or password.",
       resetPasswordFailed: "Failed to reset password. Please try again.",
+      changePasswordFailed: "Failed to change password. Please try again.",
+      notAuthenticated: "You must be logged in to change your password.",
+      newPasswordSameAsCurrent: "New password must be different from your current password.",
     },
   },
   onboarding: {
@@ -148,5 +157,43 @@ export const en = {
       dinner: "Dinner"
     }
   
-}
+},
+  healthy: {
+    explore: "Explore",
+    readMore: "Read More",
+    loading: "Loading meals...",
+    noMealsFound: "No meals found for this category.",
+    goToPage: "Go to page {{page}}",
+    header: {
+      watermark: "HEALTHY",
+      badge: "Healthy Nutritions",
+      titleHtml: "Fuel Your Fitness Journey With <br/>Customized <highlight>Meal Plans</highlight> For You",
+    },
+    categories: {
+      breakfast: "Breakfast",
+      lunch: "Lunch",
+      dinner: "Dinner",
+    },
+    dbCategories: {
+      Breakfast: "Breakfast",
+      Starter: "Starter",
+      Chicken: "Chicken",
+      Seafood: "Seafood",
+      Pasta: "Pasta",
+      Side: "Side",
+      Beef: "Beef",
+      Lamb: "Lamb",
+      Pork: "Pork",
+      Goat: "Goat",
+      Vegan: "Vegan",
+      Vegetarian: "Vegetarian",
+      Dessert: "Dessert",
+      Miscellaneous: "Miscellaneous",
+    },
+    errors: {
+      loadMealsFailed: "Failed to load meals for {{category}}. Please try again later.",
+      loadCategoriesFailed: "Failed to load meal categories. Please try again later.",
+    },
+  },
 } as const
+
