@@ -1,4 +1,4 @@
-import { useRoutes, type RouteObject } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, type RouteObject } from "react-router-dom";
 import AuthLayout from "@/features/auth/components/auth-layout";
 import RegisterPage from "@/features/auth/pages/register";
 import DesignPage from "@/features/design-system/pages/design";
@@ -15,18 +15,24 @@ function pages(): RouteObject[] {
     {
       element: <AuthLayout />,
       children: [
-        { path: "login", element: <LoginPage /> },
-        { path: "register", element: <RegisterPage /> },
+        { path: "login", element: <LoginPage />, handle: { headerKey: "auth.login" }  },
+        { path: "register", element: <RegisterPage />, handle: {headerKey: "auth.register"} },
         // { path: "auth/reset-password", element: <ResetPasswordPage /> },
-        { path: "auth/change-password", element: <ChangePasswordPage /> },
+        {
+          path: "auth/change-password",
+          element: <ChangePasswordPage />,
+          handle: { headerKey: "auth.changePasswordTitle" },
+        },
       ],
     },
   ];
 }
 
+const router = createBrowserRouter([
+  { element: <LocaleLayout locale="en" />, children: pages() },
+  { path: "ar", element: <LocaleLayout locale="ar" />, children: pages() },
+]);
+
 export default function App() {
-  return useRoutes([
-    { element: <LocaleLayout locale="en" />, children: pages() },
-    { path: "ar", element: <LocaleLayout locale="ar" />, children: pages() },
-  ]);
+  return <RouterProvider router={router} />;
 }
