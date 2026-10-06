@@ -62,6 +62,8 @@
   --radius-4xl: calc(var(--radius) * 2.6);
   --text-page-title: 40px;
   --text-page-title--line-height: 1.4;
+  --text-50: 50px;
+  --leading-140: 140%;
 }
 
 :root {
