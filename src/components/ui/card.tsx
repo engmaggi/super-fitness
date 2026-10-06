@@ -1,6 +1,7 @@
 import * as React from "react"
 import { cn } from "cn"
 import {ArrowUpRight} from "lucide-react"
+import { Link } from "react-router-dom"
 
 function Card({
   className,
@@ -100,14 +101,15 @@ function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
+
+
 function CardLink({
   className,
   children,
   ...props
-}: React.ComponentProps<"button">) {
+}: React.ComponentProps<typeof Link>) {
   return (
-    <button
-      type="button"
+    <Link
       data-slot="card-link"
       className={cn(
         "flex items-center gap-2 font-medium text-primary",
@@ -117,11 +119,12 @@ function CardLink({
     >
       {children}
       <span className="grid size-6 place-items-center rounded-full bg-primary text-primary-foreground">
-        <ArrowUpRight className="size-3.5" />
+        <ArrowUpRight className="size-3.5 rtl:-scale-x-100" />
       </span>
-    </button>
+    </Link>
   )
 }
+
 export {
   Card,
   CardHeader,

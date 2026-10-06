@@ -9,8 +9,9 @@ export interface mealsCategoriesResponseTypes{
     categories: mealsCategoriesTypes[];
 }
 export interface MealTypeCard {
-  id: string;
-  title: string;        
-  image: string;        
-  apiCategories: string[]; 
+  id: string
+  title: string
+  image: string
+  apiCategories: string[]
+  href: string
 }
