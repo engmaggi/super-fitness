@@ -149,4 +149,42 @@ export const ar = {
       },
     },
   },
+  healthy: {
+    explore: "استكشف",
+    readMore: "اقرأ المزيد",
+    loading: "جاري تحميل الوجبات...",
+    noMealsFound: "لم يتم العثور على وجبات لهذه الفئة.",
+    goToPage: "الانتقال إلى الصفحة {{page}}",
+    header: {
+      watermark: "صحي",
+      badge: "التغذية الصحية",
+      titleHtml: "زوّد رحلتك الرياضية بالطاقة مع <br/> <highlight>خطط وجبات</highlight> مخصصة لك",
+    },
+    categories: {
+      breakfast: "الإفطار",
+      lunch: "الغداء",
+      dinner: "العشاء",
+    },
+    dbCategories: {
+      Breakfast: "إفطار",
+      Starter: "مقبلات",
+      Chicken: "دجاج",
+      Seafood: "مأكولات بحرية",
+      Pasta: "معكرونة",
+      Side: "أطباق جانبية",
+      Beef: "لحم بقري",
+      Lamb: "لحم ضأن",
+      Pork: "لحم خنزير",
+      Goat: "لحم ماعز",
+      Vegan: "نباتي صرف",
+      Vegetarian: "نباتي",
+      Dessert: "حلويات",
+      Miscellaneous: "أطباق متنوعة",
+    },
+    errors: {
+      loadMealsFailed: "فشل تحميل وجبات {{category}}. يرجى المحاولة مرة أخرى لاحقًا.",
+      loadCategoriesFailed: "فشل تحميل فئات الوجبات. يرجى المحاولة مرة أخرى لاحقًا.",
+    },
+  },
 } as const;
+

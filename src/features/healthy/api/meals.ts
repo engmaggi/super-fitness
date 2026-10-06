@@ -32,22 +32,19 @@ export type MealsByType = {
 };
 
 export async function fetchMealCategories(): Promise<MealCategoriesResponse> {
-  const { data } = await mealDbClient.get<MealCategoriesResponse>(
-    "/categories.php"
-  );
+  const { data } =
+    await mealDbClient.get<MealCategoriesResponse>("/categories.php");
   return data;
 }
 
-export function classifyMealsByType(
-  categories: MealCategory[]
-): MealsByType {
+export function classifyMealsByType(categories: MealCategory[]): MealsByType {
   const result: MealsByType = { breakfast: [], lunch: [], dinner: [] };
 
   for (const category of categories) {
     const name = category.strCategory;
     for (const [type, names] of Object.entries(MEAL_TYPE_CATEGORIES) as [
       MealType,
-      readonly string[]
+      readonly string[],
     ][]) {
       if ((names as readonly string[]).includes(name)) {
         result[type].push(category);
@@ -57,4 +54,24 @@ export function classifyMealsByType(
   }
 
   return result;
+}
+
+// ── Individual meals (returned by /filter.php?c=CategoryName) ──────────────
+
+export type Meal = {
+  idMeal: string;
+  strMeal: string;
+  strMealThumb: string;
+};
+
+type MealsByCategoryResponse = {
+  meals: Meal[];
+};
+
+export async function fetchMealsByCategory(category: string): Promise<Meal[]> {
+  const { data } = await mealDbClient.get<MealsByCategoryResponse>(
+    "/filter.php",
+    { params: { c: category } },
+  );
+  return data.meals ?? [];
 }

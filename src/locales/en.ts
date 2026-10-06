@@ -144,4 +144,42 @@ export const en = {
       },
     },
   },
+  healthy: {
+    explore: "Explore",
+    readMore: "Read More",
+    loading: "Loading meals...",
+    noMealsFound: "No meals found for this category.",
+    goToPage: "Go to page {{page}}",
+    header: {
+      watermark: "HEALTHY",
+      badge: "Healthy Nutritions",
+      titleHtml: "Fuel Your Fitness Journey With <br/>Customized <highlight>Meal Plans</highlight> For You",
+    },
+    categories: {
+      breakfast: "Breakfast",
+      lunch: "Lunch",
+      dinner: "Dinner",
+    },
+    dbCategories: {
+      Breakfast: "Breakfast",
+      Starter: "Starter",
+      Chicken: "Chicken",
+      Seafood: "Seafood",
+      Pasta: "Pasta",
+      Side: "Side",
+      Beef: "Beef",
+      Lamb: "Lamb",
+      Pork: "Pork",
+      Goat: "Goat",
+      Vegan: "Vegan",
+      Vegetarian: "Vegetarian",
+      Dessert: "Dessert",
+      Miscellaneous: "Miscellaneous",
+    },
+    errors: {
+      loadMealsFailed: "Failed to load meals for {{category}}. Please try again later.",
+      loadCategoriesFailed: "Failed to load meal categories. Please try again later.",
+    },
+  },
 } as const
+

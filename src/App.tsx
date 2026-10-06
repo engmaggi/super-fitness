@@ -3,6 +3,7 @@ import AuthLayout from "@/features/auth/components/auth-layout";
 import RegisterPage from "@/features/auth/pages/register";
 import DesignPage from "@/features/design-system/pages/design";
 import HomePage from "@/features/home/pages/home-page";
+import HealthyPage from "@/features/healthy/pages/healthy-page";
 import LocaleLayout from "@/components/locale-layout";
 import MainLayout from "@/components/main-layout";
 // import ResetPasswordPage from "./features/auth/pages/reset-password-page";
@@ -29,7 +30,7 @@ function pages(): RouteObject[] {
         { index: true, element: <HomePage /> },
         { path: "about", element: <AboutPage /> },
         { path: "classes", element: <PlaceholderPage title="Classes" /> },
-        { path: "healthy", element: <PlaceholderPage title="Healthy" /> },
+        { path: "healthy", element: <HealthyPage /> },
         { path: "settings", element: <PlaceholderPage title="Settings" /> },
       ],
     },
