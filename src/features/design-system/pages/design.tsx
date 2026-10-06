@@ -57,6 +57,12 @@ const typeSamples = [
     text: "Workouts",
   },
   {
+    label: "50",
+    specs: "font-size: 50px",
+    className: "text-50",
+    text: "Super Fitness",
+  },
+  {
     label: "Page title — Desktop-6",
     specs:
       "font-family: Baloo Thambi 2; font-size: 40px; font-weight: 500; line-height: 1.4; color: #F3F3F4",
