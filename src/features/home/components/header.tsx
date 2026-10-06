@@ -20,25 +20,20 @@ export default function Header() {
   const navigate = useNavigate();
   const localePath = useLocalePath();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  // Auth state.
-  const [isLoggedIn, setIsLoggedIn] = useState(() => {
+  function hasSession() {
     return Boolean(
       localStorage.getItem("token") ||
       localStorage.getItem("user") ||
       sessionStorage.getItem("token"),
     );
-  });
+  }
+
+  // Auth state.
+  const [isLoggedIn, setIsLoggedIn] = useState(hasSession);
 
   useEffect(() => {
     const handleStorageChange = () => {
-      setIsLoggedIn(
-        Boolean(
-          localStorage.getItem("token") ||
-          localStorage.getItem("user") ||
-          sessionStorage.getItem("token"),
-        ),
-      );
+      setIsLoggedIn(hasSession());
     };
 
     window.addEventListener("storage", handleStorageChange);
@@ -98,11 +93,10 @@ export default function Header() {
               <Link
                 key={item.path}
                 to={localePath(item.path)}
-                className={`transition-colors duration-200 ${
-                  active
+                className={`transition-colors duration-200 ${active
                     ? "text-primary font-bold"
                     : "text-white/90 hover:text-primary font-semibold"
-                }`}
+                  }`}
               >
                 {item.label}
               </Link>
@@ -191,11 +185,10 @@ export default function Header() {
                     key={item.path}
                     to={localePath(item.path)}
                     onClick={closeMobileMenu}
-                    className={`rounded-2xl border px-4 py-3 text-base font-semibold transition-colors ${
-                      active
+                    className={`rounded-2xl border px-4 py-3 text-base font-semibold transition-colors ${active
                         ? "border-primary/40 bg-primary/15 text-primary"
                         : "border-white/10 bg-white/5 text-white/90 hover:border-white/20 hover:bg-white/10 hover:text-white"
-                    }`}
+                      }`}
                   >
                     {item.label}
                   </Link>
