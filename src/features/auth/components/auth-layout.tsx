@@ -1,13 +1,7 @@
 import authBg from "@/assets/auth-bg.webp";
 import authImage from "@/features/auth/assets/auth-side-img.webp";
-import { useTranslation } from "react-i18next";
-import { Outlet, useMatches } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 export default function AuthLayout() {
-  const { t } = useTranslation();
-  const matches = useMatches();
-  const headerKey = matches
-   .map((match) => match.handle as { headerKey: string } | undefined)
-   .findLast((handle) => handle?.headerKey)?.headerKey
 
   return (
     // Main wrapper: restricts height to viewport and prevents full-page scrolling
@@ -18,12 +12,6 @@ export default function AuthLayout() {
         style={{ backgroundImage: `url(${authBg})` }}
       />
 
-      {/* Foreground overlay */}
-      {headerKey && (
-      <div className="relative z-10 flex w-full flex-col items-center justify-center bg-foreground py-20 px-auto" >
-      <h1 className="text-50 font-bold font-heading text-surface">{t(headerKey)}</h1>
-      </div>
-      ) }
       {/* Content container: stacks vertically on mobile, horizontally on desktop */}
       <div className="relative z-10 flex h-full w-full flex-1 flex-col items-center justify-center bg-background/60 backdrop-blur-xl xl:flex-row xl:rtl:flex-row-reverse">
         {/* Illustration section */}
