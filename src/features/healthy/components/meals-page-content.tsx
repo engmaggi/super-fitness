@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useLocalePath } from "@/lib/use-locale-path";
 import { useMealsByType } from "../api/use-meals-by-type";
 import type { MealType } from "../api/meals";
 import { MealCard } from "./meal-card";
@@ -17,7 +18,10 @@ const TABS: { id: MealType; label: string }[] = [
 
 export function MealsPageContent() {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const localePath = useLocalePath();
   const [searchParams, setSearchParams] = useSearchParams();
+
   const rawType = searchParams.get("type");
   const activeTab: MealType =
     rawType === "lunch" || rawType === "dinner" || rawType === "breakfast"
@@ -96,9 +100,11 @@ export function MealsPageContent() {
                 key={meal.idMeal}
                 meal={meal}
                 linkText={t("healthy.explore", "Explore")}
+                onClick={() => navigate(localePath(`/healthy/${meal.idMeal}`))}
               />
             ))}
           </div>
+
 
           {/* ── Pagination Dots ── */}
           {totalPages > 1 && (
