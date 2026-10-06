@@ -12,7 +12,7 @@ export function AboutSection() {
       <div className="grid w-full gap-8 bg-card/70 p-5  sm:p-7 lg:grid-cols-[1fr_1.05fr] lg:gap-10 lg:p-10 xl:p-12">
         <AboutMediaCollage />
 
-        <div className="relative flex flex-col before:pointer-events-none before:absolute before:-top-7 before:right-0 before:hidden before:font-heading before:text-7xl before:font-bold before:uppercase before:tracking-[0.08em] before:text-foreground/10 before:content-['About_Us'] lg:before:block">
+        <div className="relative flex flex-col before:pointer-events-none before:absolute before:-top-7 before:left-0 before:hidden before:font-heading before:text-5xl before:font-bold before:uppercase before:tracking-[0.08em] before:text-foreground/8 before:content-['About_Us'] lg:before:block">
 
           <div className="mb-3 flex items-center gap-2">
             <Dumbbell className="size-4 text-primary" aria-hidden="true" />
@@ -21,9 +21,9 @@ export function AboutSection() {
             </p>
           </div>
 
-          <h2 className="max-w-xl font-heading text-3xl leading-tight font-extrabold tracking-tight text-foreground sm:text-4xl">
+          <h2 className="max-w-xl font-heading text-3xl leading-tight font-extrabold tracking-tight text-foreground sm:text-4xl relative before:pointer-events-none before:absolute before:top-6 before:left-0 before:hidden before:font-heading before:text-5xl before:font-bold before:uppercase before:tracking-[0.08em] before:text-foreground/8 before:content-['About_Us'] lg:before:block">
             Empowering You To Achieve
-            <span className="text-primary"> Your Fitness </span>
+            <span className="text-primary "> Your Fitness </span>
             Goals
           </h2>
 
