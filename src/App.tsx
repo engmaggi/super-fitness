@@ -7,6 +7,7 @@ import LocaleLayout from "@/components/locale-layout";
 import MainLayout from "@/components/main-layout";
 import ResetPasswordPage from "./features/auth/pages/reset-password-page";
 import LoginPage from "./features/auth/pages/login-page";
+import AboutPage from "./features/about/pages/about-page";
 
 function PlaceholderPage({ title }: { title: string }) {
   return (
@@ -23,7 +24,7 @@ function pages(): RouteObject[] {
       element: <MainLayout />,
       children: [
         { index: true, element: <HomePage /> },
-        { path: "about", element: <PlaceholderPage title="About" /> },
+        { path: "about", element: <AboutPage /> },
         { path: "classes", element: <PlaceholderPage title="Classes" /> },
         { path: "healthy", element: <PlaceholderPage title="Healthy" /> },
         { path: "settings", element: <PlaceholderPage title="Settings" /> },
