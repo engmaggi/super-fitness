@@ -5,14 +5,17 @@ import DesignPage from "@/features/design-system/pages/design";
 import HomePage from "@/features/home/pages/home-page";
 import LocaleLayout from "@/components/locale-layout";
 import MainLayout from "@/components/main-layout";
-import ResetPasswordPage from "./features/auth/pages/reset-password-page";
+// import ResetPasswordPage from "./features/auth/pages/reset-password-page";
+import ChangePasswordPage from "./features/auth/pages/change-password-page";
 import LoginPage from "./features/auth/pages/login-page";
 
 function PlaceholderPage({ title }: { title: string }) {
   return (
     <div className="flex flex-1 flex-col items-center justify-center p-8 py-24">
       <h1 className="font-heading text-page-title">{title}</h1>
-      <p className="mt-2 text-muted-foreground font-sans text-base">Coming soon</p>
+      <p className="mt-2 text-muted-foreground font-sans text-base">
+        Coming soon
+      </p>
     </div>
   );
 }
@@ -35,7 +38,8 @@ function pages(): RouteObject[] {
       children: [
         { path: "login", element: <LoginPage /> },
         { path: "register", element: <RegisterPage /> },
-        { path: "auth/reset-password", element: <ResetPasswordPage /> },
+        // { path: "auth/reset-password", element: <ResetPasswordPage /> },
+        { path: "auth/change-password", element: <ChangePasswordPage /> },
       ],
     },
   ];
