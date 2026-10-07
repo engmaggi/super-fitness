@@ -57,6 +57,13 @@ const typeSamples = [
     text: "Workouts",
   },
   {
+    label: "Ticker 22.3 / Bold",
+    specs:
+      "font-ticker · text-ticker · font-bold · leading-36 · tracking-0",
+    className: "font-ticker text-ticker font-bold leading-36 tracking-0",
+    text: "Super Fitness",
+  },
+  {
     label: "Page title — Desktop-6",
     specs:
       "font-family: Baloo Thambi 2; font-size: 40px; font-weight: 500; line-height: 1.4; color: #F3F3F4",
