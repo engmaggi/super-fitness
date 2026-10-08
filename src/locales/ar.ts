@@ -83,7 +83,8 @@ export const ar = {
       signupFailed: "فشل إنشاء الحساب. يرجى المحاولة مرة أخرى.",
       loginFailed: "فشل تسجيل الدخول. يرجى المحاولة مرة أخرى.",
       incorrectCredentials: "البريد الإلكتروني أو كلمة المرور غير صحيحة.",
-      resetPasswordFailed: "فشل إعادة تعيين كلمة المرور. يرجى المحاولة مرة أخرى.",
+      resetPasswordFailed:
+        "فشل إعادة تعيين كلمة المرور. يرجى المحاولة مرة أخرى.",
       changePasswordFailed: "فشل تغيير كلمة المرور. يرجى المحاولة مرة أخرى.",
       notAuthenticated: "يجب تسجيل الدخول لتغيير كلمة المرور.",
       newPasswordSameAsCurrent: "يجب أن تكون كلمة المرور الجديدة مختلفة عن الحالية.",
@@ -166,4 +167,42 @@ export const ar = {
     "تدريب شخصي",
     "حصص مباشرة",
   ],
+  healthy: {
+    explore: "استكشف",
+    readMore: "اقرأ المزيد",
+    loading: "جاري تحميل الوجبات...",
+    noMealsFound: "لم يتم العثور على وجبات لهذه الفئة.",
+    goToPage: "الانتقال إلى الصفحة {{page}}",
+    header: {
+      watermark: "صحي",
+      badge: "التغذية الصحية",
+      titleHtml: "زوّد رحلتك الرياضية بالطاقة مع <br/> <highlight>خطط وجبات</highlight> مخصصة لك",
+    },
+    categories: {
+      breakfast: "الإفطار",
+      lunch: "الغداء",
+      dinner: "العشاء",
+    },
+    dbCategories: {
+      Breakfast: "إفطار",
+      Starter: "مقبلات",
+      Chicken: "دجاج",
+      Seafood: "مأكولات بحرية",
+      Pasta: "معكرونة",
+      Side: "أطباق جانبية",
+      Beef: "لحم بقري",
+      Lamb: "لحم ضأن",
+      Pork: "لحم خنزير",
+      Goat: "لحم ماعز",
+      Vegan: "نباتي صرف",
+      Vegetarian: "نباتي",
+      Dessert: "حلويات",
+      Miscellaneous: "أطباق متنوعة",
+    },
+    errors: {
+      loadMealsFailed: "فشل تحميل وجبات {{category}}. يرجى المحاولة مرة أخرى لاحقًا.",
+      loadCategoriesFailed: "فشل تحميل فئات الوجبات. يرجى المحاولة مرة أخرى لاحقًا.",
+    },
+  },
 } as const;
+
