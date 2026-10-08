@@ -220,9 +220,18 @@
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
   }
-  
+
+  @keyframes ticker-rtl {
+    from { transform: translateX(0); }
+    to { transform: translateX(50%); }
+  }
+
   .ticker-track {
     animation: ticker 10s linear infinite;
+  }
+
+  html[dir="rtl"] .ticker-track {
+    animation-name: ticker-rtl;
   }
 
 }

@@ -135,4 +135,23 @@ export const en = {
       },
     },
   },
+  hero: {
+    title: "Your body can <highlight>stand almost</highlight> anything",
+    description:
+      "It's your mind that needs convincing. Push past your limits, stay committed, and watch as your body transform into powerhouse of strength and resilience. Start your journey today & truly capable of!",
+    activeMembers: "Active Members",
+    certifiedTrainers: "Certified Trainers",
+    yearsOfExperience: "Year Of Experience",
+    getStarted: "Get Started",
+    exploreMore: "Explore More",
+    imageAlt: "Hero Image",
+  },
+  autoplayTicker: [
+    "outdoor & online trainers",
+    "personal training",
+    "live classes",
+    "personal trainers",
+    "personal training",
+    "live classes",
+  ],
 } as const
