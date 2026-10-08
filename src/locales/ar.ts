@@ -4,6 +4,17 @@ export const ar = {
     english: "الإنجليزية",
     arabic: "العربية",
   },
+  nav: {
+    home: "الرئيسية",
+    about: "من نحن",
+    classes: "التمارين",
+    healthy: "الصحة",
+    settings: "الإعدادات",
+    login: "تسجيل الدخول",
+    logout: "تسجيل الخروج",
+    loggedOut: "تم تسجيل الخروج بنجاح",
+    openMenu: "فتح قائمة التنقل",
+  },
   auth: {
     greeting: "أهلًا بك",
     welcomeBack: "مرحبًا بعودتك",
@@ -49,10 +60,13 @@ export const ar = {
       emailInvalid: "البريد الإلكتروني غير صحيح",
       passwordRequired: "كلمة المرور مطلوبة",
       passwordMin: "كلمة المرور يجب أن تكون 8 أحرف على الأقل",
-      passwordUppercase: "كلمة المرور يجب أن تحتوي على حرف كبير واحد على الأقل (A-Z)",
-      passwordLowercase: "كلمة المرور يجب أن تحتوي على حرف صغير واحد على الأقل (a-z)",
+      passwordUppercase:
+        "كلمة المرور يجب أن تحتوي على حرف كبير واحد على الأقل (A-Z)",
+      passwordLowercase:
+        "كلمة المرور يجب أن تحتوي على حرف صغير واحد على الأقل (a-z)",
       passwordDigit: "كلمة المرور يجب أن تحتوي على رقم واحد على الأقل (0-9)",
-      passwordSpecial: "كلمة المرور يجب أن تحتوي على علامة خاصة واحدة على الأقل (مثل @$!%*?&)",
+      passwordSpecial:
+        "كلمة المرور يجب أن تحتوي على علامة خاصة واحدة على الأقل (مثل @$!%*?&)",
       rePasswordRequired: "إعادة إدخال كلمة المرور مطلوبة",
       passwordsDoNotMatch: "كلمتا المرور غير متطابقتين",
       genderRequired: "النوع مطلوب",
@@ -133,4 +147,23 @@ export const ar = {
       },
     },
   },
-} as const
+  hero: {
+    title: "جسمك يقدر <highlight>يتحمّل تقريبًا</highlight> أي شيء",
+    description:
+      "عقلك هو ما يحتاج إلى الإقناع. تجاوز حدودك، والتزم، وشاهد جسدك يتحول إلى قوة وثبات. ابدأ رحلتك اليوم واكتشف ما أنت قادر عليه!",
+    activeMembers: "أعضاء نشطون",
+    certifiedTrainers: "مدربون معتمدون",
+    yearsOfExperience: "سنوات من الخبرة",
+    getStarted: "ابدأ الآن",
+    exploreMore: "اكتشف المزيد",
+    imageAlt: "صورة القسم الرئيسي",
+  },
+  autoplayTicker: [
+    "مدربون خارجيون وأونلاين",
+    "تدريب شخصي",
+    "حصص مباشرة",
+    "مدربون شخصيون",
+    "تدريب شخصي",
+    "حصص مباشرة",
+  ],
+} as const;

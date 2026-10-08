@@ -57,6 +57,13 @@ const typeSamples = [
     text: "Workouts",
   },
   {
+    label: "Ticker 22.3 / Bold",
+    specs:
+      "font-ticker · text-ticker · font-bold · leading-36 · tracking-0",
+    className: "font-ticker text-ticker font-bold leading-36 tracking-0",
+    text: "Super Fitness",
+  },
+  {
     label: "50",
     specs: "font-size: 50px",
     className: "text-50",
