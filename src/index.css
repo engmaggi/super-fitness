@@ -216,4 +216,13 @@
   html[dir="rtl"] .btn-arrow:hover::after{
     animation: arrow-animation 0.5s ease infinite alternate;
   }
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  
+  .ticker-track {
+    animation: ticker 10s linear infinite;
+  }
+
 }
