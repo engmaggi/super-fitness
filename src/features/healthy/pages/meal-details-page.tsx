@@ -12,8 +12,8 @@ export default function MealDetailsPage() {
     <div className="flex flex-1 flex-col items-center justify-center min-h-[60vh] px-4 py-24 text-center">
       <div className="space-y-4">
         <h1 className="font-heading text-3xl font-bold uppercase sm:text-4xl text-white">
-          Meals Detail Page
-        </h1>
+          {t("healthy.mealsDetailPageTitle", "Meals Detail Page")}
+          </h1>
         {id && (
           <p className="text-sm text-muted-foreground">
             Meal ID: <span className="font-mono text-primary">{id}</span>

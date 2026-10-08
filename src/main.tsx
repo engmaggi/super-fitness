@@ -5,6 +5,7 @@ import { createRoot } from "react-dom/client"
 import { BrowserRouter } from "react-router-dom"
 import App from "./App.tsx"
 import { Toaster } from "./components/ui/sonner.tsx"
+import { AuthProvider } from "./features/auth/context/auth-provider.tsx"
 import "./index.css"
 import "./lib/i18n.ts"
 
@@ -15,8 +16,10 @@ createRoot(document.getElementById("root")!).render(
     <QueryClientProvider client={queryClient}>
       <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark">
         <BrowserRouter>
-          <App />
-          <Toaster />
+          <AuthProvider>
+            <App />
+            <Toaster />
+          </AuthProvider>
         </BrowserRouter>
       </ThemeProvider>
     </QueryClientProvider>
