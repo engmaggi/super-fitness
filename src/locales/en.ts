@@ -144,6 +144,20 @@ export const en = {
       },
     },
   },
+  meals: {
+    outlineWord: "Healthy",
+    eyebrow: "Healthy Nutritions",
+    titleBefore: "Fuel your fitness journey with customized",
+    titleHighlight: "meal plans",
+    titleAfter: "for you",
+    readMore: "Read More",
+    types: {
+      breakfast: "Breakfast",
+      lunch: "Lunch",
+      dinner: "Dinner"
+    }
+  
+},
   healthy: {
     explore: "Explore",
     readMore: "Read More",

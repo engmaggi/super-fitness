@@ -149,6 +149,20 @@ export const ar = {
       },
     },
   },
+  meals: {
+    outlineWord: "صحي",
+    eyebrow: "تغذية صحية",
+    titleBefore: "عزّز رحلة لياقتك مع",
+    titleHighlight: "خطط وجبات",
+    titleAfter: "مخصصة لك",
+    readMore: "اقرأ المزيد",
+    types: {
+      breakfast: "الفطور",
+      lunch: "الغداء",
+      dinner: "العشاء"
+    }
+  
+},
   healthy: {
     explore: "استكشف",
     readMore: "اقرأ المزيد",
