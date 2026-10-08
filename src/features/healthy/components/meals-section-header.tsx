@@ -46,7 +46,7 @@ export function MealsSectionHeader({
       {/* Overlay */}
       <div
         className={[
-          "absolute left-0 right-0 z-[2] bg-secondary/90 backdrop-blur-md",
+          "absolute left-0 right-0 z-[2] bg-background/60 backdrop-blur-xl",
           isPage ? "top-0 bottom-0" : "top-17 bottom-44",
         ].join(" ")}
       />
