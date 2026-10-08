@@ -28,8 +28,8 @@ export function SmartCoachWidget({ userId, onRequireLogin }: SmartCoachWidgetPro
         aria-label={isOpen ? "Close Smart Coach" : "Open Smart Coach"}
         className="flex flex-col items-center"
       >
-        <img src={botAvatar} alt="" className="w-20 drop-shadow-lg" />
-        <span className="-mt-3 rounded-full bg-brand px-4 py-1 text-xs font-bold text-white shadow-md">
+        <img src={botAvatar} alt="" className="w-20 drop-shadow-lg " />
+        <span className=" rounded-full bg-primary px-4 py-1 z-2 text-xs font-bold text-white shadow-md">
           {isOpen ? "Tap to Close" : "Hey Ask Me"}
         </span>
       </button>

@@ -4,6 +4,17 @@ export const ar = {
     english: "الإنجليزية",
     arabic: "العربية",
   },
+  nav: {
+    home: "الرئيسية",
+    about: "من نحن",
+    classes: "التمارين",
+    healthy: "الصحة",
+    settings: "الإعدادات",
+    login: "تسجيل الدخول",
+    logout: "تسجيل الخروج",
+    loggedOut: "تم تسجيل الخروج بنجاح",
+    openMenu: "فتح قائمة التنقل",
+  },
   auth: {
     greeting: "أهلًا بك",
     welcomeBack: "مرحبًا بعودتك",
@@ -49,10 +60,13 @@ export const ar = {
       emailInvalid: "البريد الإلكتروني غير صحيح",
       passwordRequired: "كلمة المرور مطلوبة",
       passwordMin: "كلمة المرور يجب أن تكون 8 أحرف على الأقل",
-      passwordUppercase: "كلمة المرور يجب أن تحتوي على حرف كبير واحد على الأقل (A-Z)",
-      passwordLowercase: "كلمة المرور يجب أن تحتوي على حرف صغير واحد على الأقل (a-z)",
+      passwordUppercase:
+        "كلمة المرور يجب أن تحتوي على حرف كبير واحد على الأقل (A-Z)",
+      passwordLowercase:
+        "كلمة المرور يجب أن تحتوي على حرف صغير واحد على الأقل (a-z)",
       passwordDigit: "كلمة المرور يجب أن تحتوي على رقم واحد على الأقل (0-9)",
-      passwordSpecial: "كلمة المرور يجب أن تحتوي على علامة خاصة واحدة على الأقل (مثل @$!%*?&)",
+      passwordSpecial:
+        "كلمة المرور يجب أن تحتوي على علامة خاصة واحدة على الأقل (مثل @$!%*?&)",
       rePasswordRequired: "إعادة إدخال كلمة المرور مطلوبة",
       passwordsDoNotMatch: "كلمتا المرور غير متطابقتين",
       genderRequired: "النوع مطلوب",
@@ -69,7 +83,8 @@ export const ar = {
       signupFailed: "فشل إنشاء الحساب. يرجى المحاولة مرة أخرى.",
       loginFailed: "فشل تسجيل الدخول. يرجى المحاولة مرة أخرى.",
       incorrectCredentials: "البريد الإلكتروني أو كلمة المرور غير صحيحة.",
-      resetPasswordFailed: "فشل إعادة تعيين كلمة المرور. يرجى المحاولة مرة أخرى.",
+      resetPasswordFailed:
+        "فشل إعادة تعيين كلمة المرور. يرجى المحاولة مرة أخرى.",
       changePasswordFailed: "فشل تغيير كلمة المرور. يرجى المحاولة مرة أخرى.",
       notAuthenticated: "يجب تسجيل الدخول لتغيير كلمة المرور.",
       newPasswordSameAsCurrent: "يجب أن تكون كلمة المرور الجديدة مختلفة عن الحالية.",
@@ -133,4 +148,61 @@ export const ar = {
       },
     },
   },
-} as const
+  hero: {
+    title: "جسمك يقدر <highlight>يتحمّل تقريبًا</highlight> أي شيء",
+    description:
+      "عقلك هو ما يحتاج إلى الإقناع. تجاوز حدودك، والتزم، وشاهد جسدك يتحول إلى قوة وثبات. ابدأ رحلتك اليوم واكتشف ما أنت قادر عليه!",
+    activeMembers: "أعضاء نشطون",
+    certifiedTrainers: "مدربون معتمدون",
+    yearsOfExperience: "سنوات من الخبرة",
+    getStarted: "ابدأ الآن",
+    exploreMore: "اكتشف المزيد",
+    imageAlt: "صورة القسم الرئيسي",
+  },
+  autoplayTicker: [
+    "مدربون خارجيون وأونلاين",
+    "تدريب شخصي",
+    "حصص مباشرة",
+    "مدربون شخصيون",
+    "تدريب شخصي",
+    "حصص مباشرة",
+  ],
+  healthy: {
+    explore: "استكشف",
+    readMore: "اقرأ المزيد",
+    loading: "جاري تحميل الوجبات...",
+    noMealsFound: "لم يتم العثور على وجبات لهذه الفئة.",
+    goToPage: "الانتقال إلى الصفحة {{page}}",
+    header: {
+      watermark: "صحي",
+      badge: "التغذية الصحية",
+      titleHtml: "زوّد رحلتك الرياضية بالطاقة مع <br/> <highlight>خطط وجبات</highlight> مخصصة لك",
+    },
+    categories: {
+      breakfast: "الإفطار",
+      lunch: "الغداء",
+      dinner: "العشاء",
+    },
+    dbCategories: {
+      Breakfast: "إفطار",
+      Starter: "مقبلات",
+      Chicken: "دجاج",
+      Seafood: "مأكولات بحرية",
+      Pasta: "معكرونة",
+      Side: "أطباق جانبية",
+      Beef: "لحم بقري",
+      Lamb: "لحم ضأن",
+      Pork: "لحم خنزير",
+      Goat: "لحم ماعز",
+      Vegan: "نباتي صرف",
+      Vegetarian: "نباتي",
+      Dessert: "حلويات",
+      Miscellaneous: "أطباق متنوعة",
+    },
+    errors: {
+      loadMealsFailed: "فشل تحميل وجبات {{category}}. يرجى المحاولة مرة أخرى لاحقًا.",
+      loadCategoriesFailed: "فشل تحميل فئات الوجبات. يرجى المحاولة مرة أخرى لاحقًا.",
+    },
+  },
+} as const;
+

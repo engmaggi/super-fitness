@@ -1,7 +1,15 @@
+import { AboutSection } from "@/features/about/components/about-section";
+import { MealsSection } from "@/features/healthy/components/meals-section";
+import HeroSection from "../components/hero";
+
 export default function HomePage() {
   return (
-    <main className="flex min-h-svh items-center justify-center bg-background text-foreground">
-      <h1 className="font-heading text-page-title">Home</h1>
-    </main>
+      <div className="flex flex-1 flex-col items-center justify-center ">
+      <HeroSection />
+      <AboutSection />
+      <h2 className={"font-heading text-page-title"}>workout Section</h2>
+      <h2 className={"font-heading text-page-title"}>why us Section</h2>
+      <MealsSection />
+    </div>
   );
 }

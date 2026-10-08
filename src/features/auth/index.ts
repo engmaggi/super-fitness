@@ -1,7 +1,10 @@
-
 export { default as ResetPasswordForm } from "./components/reset-password-form";
 export { default as ResetPasswordPage } from "./pages/reset-password-page";
-export { default as ChangePasswordForm} from "./components/change-password-form";
+export { default as ChangePasswordForm } from "./components/change-password-form";
 export { default as ChangePasswordPage } from "./pages/change-password-page";
 export { default as LoginPage } from "./pages/login-page";
-
+export { default as RegisterPage } from "./pages/register";
+export { default as RegisterForm } from "./components/register-form";
+export { AuthProvider } from "./context/auth-provider";
+export { useAuth } from "./context/use-auth";
+export type { AuthUser } from "./api/get-profile";

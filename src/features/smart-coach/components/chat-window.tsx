@@ -4,7 +4,7 @@ import { Menu } from "lucide-react";
 import { MessageList } from "./message-list";
 import { ChatInput } from "./chat-input";
 import { PreviousConversationsPanel } from "./previous-conversations-panel";
-
+import chatBg from "../assets/chat-bg.jpg"
 
 type ChatWindowProps = {
   messages: Message[];
@@ -39,18 +39,29 @@ export function ChatWindow({
 
   return (
     <section
-      aria-label="Smart Coach chat"
-      className="relative flex h-[min(30rem,70vh)] w-[min(20rem,calc(100vw-3rem))] flex-col overflow-hidden rounded-2xl border border-brand bg-black/70 backdrop-blur-md"
-    >
-      <header className="flex shrink-0 items-center justify-between px-4 py-3">
-        <h2 className="text-sm font-semibold text-white">Smart Coach</h2>
+  aria-label="Smart Coach chat"
+  className="relative isolate flex h-[min(30rem,70vh)] w-[min(21rem,calc(100vw-3rem))] flex-col overflow-hidden rounded-md border border-primary px-4"
+>
+  {/*  the image bg */}
+  <div
+    aria-hidden="true"
+    className="pointer-events-none absolute inset-0 -z-20 bg-cover bg-center"
+    style={{ backgroundImage: `url(${chatBg})` }}
+  />
+
+  <div
+    aria-hidden="true"
+    className="pointer-events-none absolute inset-0 -z-10 bg-[#1A1A1A]/50 backdrop-blur-[2px]"
+  />
+      <header className="flex shrink-0 items-center justify-between py-5">
+        <h2 className="text-2xl font-bold text-white">Smart Coach</h2>
         <button
           type="button"
           onClick={() => setShowHistory((prev) => !prev)}
           aria-label="Previous conversations"
           aria-expanded={showHistory}
         >
-          <Menu className="size-5 text-brand" />
+          <Menu className="size-5 text-primary" />
         </button>
       </header>
 
@@ -59,7 +70,7 @@ export function ChatWindow({
 
       {/* overlay: absolute over the chat, the chat stays visible behind it */}
       {showHistory && (
-        <div className="absolute inset-x-3 top-12 z-10">
+         <div className="absolute inset-s-0 top-0 z-10 w-3/4">
           <PreviousConversationsPanel
             conversations={conversations}
             onSelect={handleSelect}
