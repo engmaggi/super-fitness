@@ -15,13 +15,13 @@ export function AboutSection() {
         <div className="relative flex flex-col before:pointer-events-none before:absolute before:-top-7 before:left-0 before:hidden before:font-heading before:text-5xl before:font-bold before:uppercase before:tracking-[0.08em] before:text-foreground/8 before:content-['About_Us'] lg:before:block">
 
           <div className="mb-3 flex items-center gap-2">
-            <Dumbbell className="size-4 text-primary" aria-hidden="true" />
-            <p className="font-heading text-sm font-bold text-primary uppercase">
+            <Dumbbell className="size-8 text-primary rotate-45" aria-hidden="true" />
+            <p className="font-heading text-sm font-bold text-primary uppercase ">
               About Us
             </p>
           </div>
 
-          <h2 className="max-w-xl font-heading text-3xl leading-tight font-extrabold tracking-tight text-foreground sm:text-4xl relative before:pointer-events-none before:absolute before:top-6 before:left-0 before:hidden before:font-heading before:text-5xl before:font-bold before:uppercase before:tracking-[0.08em] before:text-foreground/8 before:content-['About_Us'] lg:before:block">
+          <h2 className="max-w-xl font-heading text-3xl leading-[120%] font-extrabold tracking-tight text-foreground sm:text-4xl relative before:pointer-events-none before:absolute before:top-6 before:left-0 before:hidden before:font-heading before:text-5xl before:font-bold before:uppercase before:tracking-[0.08em] before:text-foreground/8 before:content-['About_Us'] lg:before:block">
             Empowering You To Achieve
             <span className="text-primary "> Your Fitness </span>
             Goals

@@ -19,8 +19,8 @@ export function MealsSectionHeader({
   return (
     <section
       className={[
-        "relative w-screen overflow-hidden -mx-[calc((100vw-100%)/2)] px-0",
-        isPage ? "min-h-screen pt-40 pb-20" : "py-20",
+        "relative w-full min-w-0 overflow-hidden px-0",
+        isPage ? "min-h-screen pt-40 pb-20" : "pt-16 pb-15",
       ].join(" ")}
     >
       {/* Background image */}
@@ -52,15 +52,15 @@ export function MealsSectionHeader({
       />
 
       {/* Content */}
-      <div className="relative z-[3] mx-auto w-full max-w-screen-2xl px-6 sm:px-10 lg:px-16">
+      <div className="relative z-[3] mx-auto w-full max-w-screen-2xl px-6 sm:px-10 lg:px-20">
         {/* Badge & Heading */}
         <div className="mb-10 text-center">
-          <div className="mb-3 inline-flex items-center gap-2 text-lg sm:text-base font-semibold text-primary">
-            <Dumbbell className="size-4" />
+          <div className="mb-3 inline-flex items-center gap-2 pt-2 text-base sm:text-base font-semibold text-primary leading-6.5">
+           <Dumbbell className="size-8 rotate-45" />
             {t("healthy.header.badge", "Healthy Nutritions")}
           </div>
 
-          <h2 className="font-heading text-3xl font-bold uppercase leading-tight text-white sm:text-5xl lg:text-5xl">
+          <h2 className="font-heading text-xl font-bold uppercase leading-[120%] text-white sm:text-4xl ">
             <Trans
               i18nKey="healthy.header.titleHtml"
               components={{
