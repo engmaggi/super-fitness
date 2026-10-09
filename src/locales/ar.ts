@@ -254,6 +254,22 @@ export const ar = {
       },
     ],
   },
+  workout: {
+    header: {
+      watermark: "تمرين",
+      badge: "حصص اللياقة",
+      titleHtml:
+        "حوّل جسمك مع تماريننا <br/> <highlight>الديناميكية القادمة</highlight>",
+    },
+  },
+  classes: {
+    title: "فئات التمارين",
+    description: "استكشف فئات التمارين الخاصة بنا واختر الفئة المناسبة لك.",
+    chooseMuscle: "اختر مجموعة العضلات لعرض تمارينها.",
+    noMuscleCategories: "لم يتم العثور على فئات عضلية.",
+    failedToLoadExercises: "فشل تحميل التمارين. يرجى المحاولة مرة أخرى لاحقًا.",
+    noExercisesFound: "لم يتم العثور على تمارين لهذه العضلة.",
+  },
   footer: {
     logoAlt: "سوبر فيتنس",
     tagline: "ادفع بقوة أكبر، وتقدّم أبعد. <br/>رحلة لياقتك تبدأ اليوم!",

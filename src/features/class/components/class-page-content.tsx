@@ -9,8 +9,9 @@ import { useClassCategories } from "../api/use-class";
 import { useClassesByType } from "../api/use-class-by-type";
 
 const PAGE_SIZE = 6;
+const HOME_ROW_SIZE = 3;
 
-export function ClassPageContent() {
+export function ClassPageContent({ isPage = true }: { isPage?: boolean }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const localePath = useLocalePath();
@@ -24,11 +25,14 @@ export function ClassPageContent() {
     isError: isMusclesError,
   } = useClassCategories();
 
- const {
-  classes = [],
-  isLoading: isLoadingExercises,
-  isError: isExercisesError,
-} = useClassesByType(rawType);
+  const selectedType = rawType ?? TABS?.[0]?._id ?? null;
+  const pageSize = isPage ? PAGE_SIZE : HOME_ROW_SIZE;
+
+  const {
+    classes = [],
+    isLoading: isLoadingExercises,
+    isError: isExercisesError,
+  } = useClassesByType(selectedType);
 
   useEffect(() => {
     setCurrentPage(0);
@@ -38,22 +42,19 @@ export function ClassPageContent() {
     setSearchParams({ type });
   };
 
-  const totalPages = Math.max(
-    1,
-    Math.ceil(classes.length / PAGE_SIZE),
-  );
+  const totalPages = Math.max(1, Math.ceil(classes.length / pageSize));
 
   const visibleClasses = classes.slice(
-    currentPage * PAGE_SIZE,
-    (currentPage + 1) * PAGE_SIZE,
+    currentPage * pageSize,
+    (currentPage + 1) * pageSize,
   );
 
   return (
-    <ClassSectionHeader isPage={true}>
+    <ClassSectionHeader isPage={isPage}>
       {/* Muscle Tabs */}
       <div className="mb-10 flex flex-wrap items-center justify-center gap-3">
         {TABS?.map((tab) => {
-          const isActive = rawType === tab._id;
+          const isActive = selectedType === tab._id;
 
           return (
             <button
@@ -75,14 +76,14 @@ export function ClassPageContent() {
 
       {/* Loading */}
       {(isLoadingMuscles || isLoadingExercises) && (
-        <ClassSectionSkeleton pageSize={PAGE_SIZE} />
+        <ClassSectionSkeleton pageSize={pageSize} />
       )}
 
       {/* Errors */}
       {(isMusclesError || isExercisesError) && (
         <div className="py-16 text-center">
           <p className="text-base text-white/80">
-            Failed to load exercises. Please try again later.
+            {t("classes.failedToLoadExercises", "Failed to load exercises. Please try again later.")}
           </p>
         </div>
       )}
@@ -91,38 +92,35 @@ export function ClassPageContent() {
       {!isLoadingMuscles && !isMusclesError && !TABS?.length && (
         <div className="py-16 text-center">
           <p className="text-base text-white/80">
-            No muscle categories found.
-          </p>
-        </div>
-      )}
-
-      {/* Choose a muscle */}
-      {!rawType && !isLoadingMuscles && (
-        <div className="py-16 text-center">
-          <p className="text-base text-white/80">
-            Choose a muscle group to view its exercises.
+            {t("classes.noMuscleCategories", "No muscle categories found.")}
           </p>
         </div>
       )}
 
       {/* Exercises */}
-      {rawType &&
+      {selectedType &&
         !isLoadingExercises &&
         !isExercisesError &&
         classes.length === 0 && (
           <div className="py-16 text-center">
             <p className="text-base text-white/80">
-              No exercises found for this muscle.
+              {t("classes.noExercisesFound", "No exercises found for this muscle.")}
             </p>
           </div>
         )}
 
-      {rawType &&
+      {selectedType &&
         !isLoadingExercises &&
         !isExercisesError &&
         visibleClasses.length > 0 && (
           <div className="space-y-10">
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div
+              className={
+                isPage
+                  ? "grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+                  : "grid w-full min-w-0 grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-8"
+              }
+            >
               {visibleClasses.map((exercise) => (
                 <ClassCard
                   key={exercise._id}

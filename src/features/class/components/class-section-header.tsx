@@ -1,4 +1,4 @@
-import healthyBg from "@/assets/healthy-section.jpg";
+import workoutBg from "@/assets/workout-bg.webp";
 import { Dumbbell } from "lucide-react";
 import type { ReactNode } from "react";
 import { Trans, useTranslation } from "react-i18next";
@@ -19,13 +19,13 @@ export function ClassSectionHeader({
   return (
     <section
       className={[
-        "relative w-screen overflow-hidden -mx-[calc((100vw-100%)/2)] px-0",
+        "relative w-full min-w-0 overflow-hidden px-0",
         isPage ? "min-h-screen pt-40 pb-20" : "py-20",
       ].join(" ")}
     >
       {/* Background image */}
       <img
-        src={healthyBg}
+        src={workoutBg}
         alt=""
         aria-hidden="true"
         className="absolute inset-0 h-full w-full object-cover object-center"
@@ -54,13 +54,13 @@ export function ClassSectionHeader({
       {/* Content */}
       <div className="relative z-[3] mx-auto w-full max-w-screen-2xl px-6 sm:px-10 lg:px-16">
         {/* Badge & Heading */}
-        <div className="mb-10 text-center">
-          <div className="mb-3 inline-flex items-center gap-2 text-lg sm:text-base font-semibold text-primary">
+        <div className="mb-10 text-start lg:text-center">
+          <div className="mb-3 inline-flex items-center  gap-2 text-lg sm:text-base font-semibold text-primary">
             <Dumbbell className="size-4" />
             {t("workout.header.badge", "Fitness Classes")}
           </div>
 
-          <h2 className="font-heading text-3xl font-bold uppercase leading-tight text-white sm:text-5xl lg:text-5xl">
+          <h2 className="font-heading text-xl font-bold uppercase leading-120 text-white text-start lg:text-center lg:text-5xl">
             <Trans
               i18nKey="workout.header.titleHtml"
               components={{
