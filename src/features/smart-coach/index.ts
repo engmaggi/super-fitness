@@ -1,0 +1,1 @@
+export { SmartCoachWidget } from "./components/smart-coach-widget";
