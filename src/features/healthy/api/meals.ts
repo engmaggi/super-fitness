@@ -75,3 +75,25 @@ export async function fetchMealsByCategory(category: string): Promise<Meal[]> {
   );
   return data.meals ?? [];
 }
+
+
+
+
+type MealDetailsResponse = {
+  meals: (Meal & {
+    strInstructions: string;
+    strArea: string;
+    strCategory: string;
+    [key: `strIngredient${number}`]: string | null;
+    [key: `strMeasure${number}`]: string | null;
+  })[] | null;
+};
+
+export async function fetchMealById(id: string) {
+  const { data } = await mealDbClient.get<MealDetailsResponse>(
+    "/lookup.php",
+    { params: { i: id } },
+  );
+
+  return data.meals?.[0] ?? null;
+}

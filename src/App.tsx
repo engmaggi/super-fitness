@@ -11,6 +11,8 @@ import MainLayout from "@/components/main-layout";
 import ChangePasswordPage from "./features/auth/pages/change-password-page";
 import LoginPage from "./features/auth/pages/login-page";
 import AboutPage from "./features/about/pages/about-page";
+import ClassPage from "./features/class/pages/class-page";
+import ClassDetailsPage from "./features/class/pages/class-details-page";
 
 function PlaceholderPage({ title }: { title: string }) {
   return (
@@ -30,7 +32,8 @@ function pages(): RouteObject[] {
       children: [
         { index: true, element: <HomePage /> },
         { path: "about", element: <AboutPage /> },
-        { path: "classes", element: <PlaceholderPage title="Classes" /> },
+        { path: "classes", element: <ClassPage /> },
+        { path: "classes/:id", element: <ClassDetailsPage /> },
         { path: "healthy", element: <HealthyPage /> },
         { path: "healthy/:id", element: <MealDetailsPage /> },
         { path: "settings", element: <PlaceholderPage title="Settings" /> },
