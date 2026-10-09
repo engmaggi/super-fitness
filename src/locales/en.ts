@@ -108,9 +108,7 @@ export const en = {
       loginFailed: "Login failed. Please try again.",
       incorrectCredentials: "Incorrect email or password.",
       resetPasswordFailed: "Failed to reset password. Please try again.",
-      changePasswordFailed: "Failed to change password. Please try again.",
-      notAuthenticated: "You must be logged in to change your password.",
-      newPasswordSameAsCurrent: "New password must be different from your current password.",
+
     },
   },
   onboarding: {
@@ -287,5 +285,21 @@ export const en = {
     weekdayHours: "Mon - Fri : 08:00 AM - 10:00 PM",
     location: "our location",
     address: "2715 Ash Dr. San Jose, South<br/> Dakota 83475",
+  },
+  workout: {
+    header: {
+      watermark: "WORKOUT",
+      badge: "Fitness Classes",
+      titleHtml:
+        "Transform Your Body with Our Dynamic <br/> <highlight>Upcoming Workouts</highlight>",
+    },
+  },
+  classes: {
+    title: "Workout Classes",
+    description: "Explore our workout classes and find the perfect one for you.",
+    chooseMuscle: "Choose a muscle group to view its exercises.",
+    noMuscleCategories: "No muscle categories found.",
+    failedToLoadExercises: "Failed to load exercises. Please try again later.",
+    noExercisesFound: "No exercises found for this muscle.",
   },
 } as const
