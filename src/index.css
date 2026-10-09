@@ -228,7 +228,7 @@
   }
 
   .ticker-track {
-    animation: ticker 10s linear infinite;
+    animation: ticker 25s linear infinite;
   }
 
   html[dir="rtl"] .ticker-track {
