@@ -200,5 +200,40 @@ export const en = {
       loadCategoriesFailed: "Failed to load meal categories. Please try again later.",
     },
   },
+  whyUs: {
+    watermark: "Why Us",
+    eyebrow: "Why Us",
+    title: "Elevate fitness with the <highlight>best way</highlight> possible",
+    description:
+      "We offer a fitness journey that's tailored to your goals, supported by professional trainers and a welcoming community. Whether it's weight loss, strength building, or overall wellness, our proven methods.",
+    points: [
+      {
+        title: "personalized fitness plans",
+        description:
+          "We tailor every workout to fit your unique goals and fitness level ensuring that you make the most progress.",
+      },
+      {
+        title: "results-driven focus",
+        description:
+          "Everything we do is designed to help you achieve measurable results, whether you're aiming for weight loss.",
+      },
+      {
+        title: "state-of-the-art equipment",
+        description:
+          "We provide the latest in gym equipment, from cardio machines to free weights, designed to support every type.",
+      },
+    ],
+  },
+  footer: {
+    logoAlt: "Super Fitness",
+    tagline: "Push harder, go further. Your <br/>fitness journey starts today!",
+    contactUs: "contact us",
+    phoneAlt: "Phone",
+    emailAlt: "Email",
+    gymTiming: "our gym timing",
+    weekdayHours: "Mon - Fri : 08:00 AM - 10:00 PM",
+    location: "our location",
+    address: "2715 Ash Dr. San Jose, South<br/> Dakota 83475",
+  },
 } as const
 
