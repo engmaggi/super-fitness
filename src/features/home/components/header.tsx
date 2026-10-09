@@ -1,10 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Menu, User, Settings, LogOut, LogIn } from "lucide-react";
 import { toast } from "sonner";
+import { useTheme } from "next-themes";
 import headerLogo from "@/assets/headerLogo.png";
 import { useLocalePath } from "@/lib/use-locale-path";
+import { getAuthToken } from "@/lib/auth-token";
+import { useAuth } from "@/features/auth/context/use-auth";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -19,39 +22,17 @@ export default function Header() {
   const location = useLocation();
   const navigate = useNavigate();
   const localePath = useLocalePath();
+  const { logout, user, isLoading: isAuthLoading } = useAuth();
+  const { theme } = useTheme();
+  const isDarkTheme = theme !== "light";
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  // Auth state.
-  const [isLoggedIn, setIsLoggedIn] = useState(() => {
-    return Boolean(
-      localStorage.getItem("token") ||
-      localStorage.getItem("user") ||
-      sessionStorage.getItem("token"),
-    );
-  });
-
-  useEffect(() => {
-    const handleStorageChange = () => {
-      setIsLoggedIn(
-        Boolean(
-          localStorage.getItem("token") ||
-          localStorage.getItem("user") ||
-          sessionStorage.getItem("token"),
-        ),
-      );
-    };
-
-    window.addEventListener("storage", handleStorageChange);
-    return () => window.removeEventListener("storage", handleStorageChange);
-  }, []);
+  const isLoggedIn =
+    user !== null || (isAuthLoading && Boolean(getAuthToken()));
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    sessionStorage.removeItem("token");
-    setIsLoggedIn(false);
+    logout();
     toast.success(t("nav.loggedOut", "Logged out successfully"));
-    navigate(localePath("/login"));
+    navigate(localePath("/"));
   };
 
   const navItems = [
@@ -91,7 +72,7 @@ export default function Header() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden items-center gap-6 sm:gap-10 font-heading text-base md:flex md:text-lg font-bold">
+        <nav className={`hidden items-center gap-6 sm:gap-10 font-heading text-base md:flex md:text-lg font-bold ${isDarkTheme ? "text-white" : "text-neutral-900"}`}>
           {navItems.map((item) => {
             const active = isTabActive(item.path);
             return (
@@ -101,7 +82,7 @@ export default function Header() {
                 className={`transition-colors duration-200 ${
                   active
                     ? "text-primary font-bold"
-                    : "text-white/90 hover:text-primary font-semibold"
+                    : `${isDarkTheme ? "text-white/90" : "text-neutral-700"} hover:text-primary font-semibold`
                 }`}
               >
                 {item.label}
@@ -116,7 +97,7 @@ export default function Header() {
             type="button"
             onClick={() => setMobileMenuOpen(true)}
             aria-label={t("nav.openMenu", "Open navigation menu")}
-            className="flex size-10 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white shadow-md transition-all hover:bg-white/15 hover:scale-105 active:scale-95 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background md:hidden"
+            className={`flex size-10 items-center justify-center rounded-full border shadow-md transition-all hover:scale-105 active:scale-95 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background md:hidden ${isDarkTheme ? "border-white/15 bg-white/10 text-white hover:bg-white/15" : "border-neutral-900/15 bg-neutral-900/5 text-neutral-900 hover:bg-neutral-900/10"}`}
           >
             <Menu className="size-5" />
           </button>

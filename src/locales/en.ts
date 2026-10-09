@@ -15,6 +15,31 @@ export const en = {
     loggedOut: "Logged out successfully",
     openMenu: "Open navigation menu",
   },
+  profile: {
+    loading: "Loading your settings...",
+    loadError: "Unable to load your settings.",
+    tryAgain: "Please try again.",
+    retry: "Retry",
+    goal: "Your Goal",
+    level: "Level",
+    weight: "Weight",
+    tapToChange: "Tap to change",
+    saveChanges: "Save changes",
+    saving: "Saving...",
+    saved: "Profile updated successfully.",
+    changePassword: "Change Password",
+    selectLanguage: "Select Language",
+    mood: "Mood",
+    security: "Security",
+    privacyPolicy: "Privacy Policy",
+    help: "Help",
+    comingSoon: "This feature is coming soon.",
+    guestTitle: "Your fitness profile starts here",
+    guestDescription:
+      "Sign in to view your fitness settings, update your goals, and keep your progress in one place.",
+    login: "Log in to your account",
+    backHome: "Back to home",
+  },
   auth: {
     greeting: "Hey there",
     welcomeBack: "Welcome back",
@@ -52,6 +77,8 @@ export const en = {
     noAccountYet: "Dont have an account yet ?",
     alreadyHaveAccount: "Already Have an account ?",
     registerSuccess: "Account created! Welcome aboard.",
+    registrationLoginRequired:
+      "Your account was created, but automatic sign-in failed. Please log in.",
     loginSuccess: "Logged in successfully.",
     errors: {
       firstNameRequired: "First name is required",
@@ -262,4 +289,3 @@ export const en = {
     address: "2715 Ash Dr. San Jose, South<br/> Dakota 83475",
   },
 } as const
-

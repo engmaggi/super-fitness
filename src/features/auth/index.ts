@@ -7,4 +7,4 @@ export { default as RegisterPage } from "./pages/register";
 export { default as RegisterForm } from "./components/register-form";
 export { AuthProvider } from "./context/auth-provider";
 export { useAuth } from "./context/use-auth";
-export type { AuthUser } from "./api/get-profile";
+export type { AuthUser } from "../profile/api/get-profile";

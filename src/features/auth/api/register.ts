@@ -16,22 +16,26 @@ type RegisterPayload = {
   activityLevel: string;
 };
 
-export async function register({ firstName, lastName, email, password, rePassword, gender, height, weight, age, goal, activityLevel }: RegisterPayload) {
- 
+type RegisterResponse = {
+  message?: string;
+  token?: string;
+  error?: string;
+};
 
-  // Send the new password to the backend
+export async function register(
+  payload: RegisterPayload,
+): Promise<RegisterResponse> {
   const res = await fetch(`${BASE_URL}/v1/auth/signup`, {
-    method: "POST", 
+    method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ firstName, lastName, email, password, rePassword, gender, height, weight, age, goal, activityLevel }),
+    body: JSON.stringify(payload),
   });
 
-  const data = await res.json().catch(() => null);
+  const data: RegisterResponse | null = await res.json().catch(() => null);
 
-  // If the request failed, stop here and let the caller show an error
   if (!res.ok) {
     throw new Error(data?.error || data?.message || "Failed to register");
   }
 
-  return data;
+  return data ?? {};
 }

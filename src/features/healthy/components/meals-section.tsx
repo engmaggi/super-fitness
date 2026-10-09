@@ -18,7 +18,7 @@ export function MealsSection() {
       {isLoading && <MealsSectionSkeleton />}
 
       {isError && (
-        <p className="text-center text-white/70">
+        <p className="text-center text-foreground/70">
           {t(
             "healthy.errors.loadCategoriesFailed",
             "Failed to load meal categories. Please try again later.",
@@ -49,4 +49,3 @@ export function MealsSection() {
     </MealsSectionHeader>
   );
 }
-

@@ -61,7 +61,7 @@ export function MealsPageContent() {
                 "rounded-full px-6 py-2.5 text-sm sm:text-base font-semibold transition-all duration-200 cursor-pointer",
                 isActive
                   ? "bg-primary text-white shadow-lg shadow-primary/30"
-                  : "text-white/80 hover:text-white hover:bg-white/10",
+                  : "text-foreground/80 hover:text-foreground hover:bg-foreground/10",
               ].join(" ")}
             >
               {t(`healthy.categories.${tab.id}`, tab.label)}
@@ -75,7 +75,7 @@ export function MealsPageContent() {
 
       {isError && (
         <div className="py-16 text-center">
-          <p className="text-base text-white/80">
+          <p className="text-base text-foreground/80">
             {t("healthy.errors.loadMealsFailed", {
               category: t(`healthy.categories.${activeTab}`, activeTab),
               defaultValue: `Failed to load meals for ${activeTab}. Please try again later.`,
@@ -86,7 +86,7 @@ export function MealsPageContent() {
 
       {!isLoading && !isError && meals.length === 0 && (
         <div className="py-16 text-center">
-          <p className="text-base text-white/80">
+          <p className="text-base text-foreground/80">
             {t("healthy.noMealsFound", "No meals found for this category.")}
           </p>
         </div>
@@ -124,7 +124,7 @@ export function MealsPageContent() {
                       "h-2 transition-all duration-300 cursor-pointer",
                       isActive
                         ? "w-7 rounded-full bg-primary"
-                        : "w-2 rounded-full bg-white/60 hover:bg-white",
+                        : "w-2 rounded-full bg-foreground/40 hover:bg-foreground/70",
                     ].join(" ")}
                   />
                 );
@@ -136,4 +136,3 @@ export function MealsPageContent() {
     </MealsSectionHeader>
   );
 }
-

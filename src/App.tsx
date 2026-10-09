@@ -7,10 +7,11 @@ import HealthyPage from "@/features/healthy/pages/healthy-page";
 import MealDetailsPage from "@/features/healthy/pages/meal-details-page";
 import LocaleLayout from "@/components/locale-layout";
 import MainLayout from "@/components/main-layout";
-// import ResetPasswordPage from "./features/auth/pages/reset-password-page";
+import ResetPasswordPage from "./features/auth/pages/reset-password-page";
 import ChangePasswordPage from "./features/auth/pages/change-password-page";
 import LoginPage from "./features/auth/pages/login-page";
 import AboutPage from "./features/about/pages/about-page";
+import { ProfileGrid } from "./features/profile";
 
 function PlaceholderPage({ title }: { title: string }) {
   return (
@@ -33,7 +34,7 @@ function pages(): RouteObject[] {
         { path: "classes", element: <PlaceholderPage title="Classes" /> },
         { path: "healthy", element: <HealthyPage /> },
         { path: "healthy/:id", element: <MealDetailsPage /> },
-        { path: "settings", element: <PlaceholderPage title="Settings" /> },
+        { path: "settings", element: <ProfileGrid/> },
       ],
     },
 
@@ -43,7 +44,7 @@ function pages(): RouteObject[] {
       children: [
         { path: "login", element: <LoginPage /> },
         { path: "register", element: <RegisterPage /> },
-        // { path: "auth/reset-password", element: <ResetPasswordPage /> },
+        { path: "auth/reset-password", element: <ResetPasswordPage /> },
         { path: "auth/change-password", element: <ChangePasswordPage /> },
       ],
     },

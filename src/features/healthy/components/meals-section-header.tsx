@@ -1,5 +1,6 @@
 import healthyBg from "@/assets/healthy-section.jpg";
 import { Dumbbell } from "lucide-react";
+import { useTheme } from "next-themes";
 import type { ReactNode } from "react";
 import { Trans, useTranslation } from "react-i18next";
 
@@ -15,6 +16,8 @@ export function MealsSectionHeader({
   isPage = false,
 }: MealsSectionHeaderProps) {
   const { t } = useTranslation();
+  const { theme } = useTheme();
+  const isDarkTheme = theme !== "light";
 
   return (
     <section
@@ -38,7 +41,13 @@ export function MealsSectionHeader({
           isPage ? "z-3 top-26" : "z-[1] top-2 sm:top-8",
         ].join(" ")}
       >
-        <span className="font-heading text-5xl sm:text-6xl md:text-7xl font-bold uppercase tracking-[0.18em] text-transparent [-webkit-text-stroke:1.5px_rgba(255,255,255,0.25)]">
+        <span
+          className={`font-heading text-5xl sm:text-6xl md:text-7xl font-bold uppercase tracking-[0.18em] text-transparent ${
+            isDarkTheme
+              ? "[-webkit-text-stroke:1.5px_rgba(255,255,255,0.25)]"
+              : "[-webkit-text-stroke:1.5px_rgba(36,36,36,0.18)]"
+          }`}
+        >
           {t("healthy.header.watermark", "HEALTHY")}
         </span>
       </div>
@@ -46,7 +55,7 @@ export function MealsSectionHeader({
       {/* Overlay */}
       <div
         className={[
-          "absolute left-0 right-0 z-[2] bg-secondary/90 backdrop-blur-md",
+          "absolute left-0 right-0 z-[2] bg-background/90 backdrop-blur-md",
           isPage ? "top-0 bottom-0" : "top-17 bottom-44",
         ].join(" ")}
       />
@@ -60,7 +69,7 @@ export function MealsSectionHeader({
             {t("healthy.header.badge", "Healthy Nutritions")}
           </div>
 
-          <h2 className="font-heading text-xl font-bold uppercase leading-[120%] text-white sm:text-4xl ">
+          <h2 className="font-heading text-xl font-bold uppercase leading-[120%] text-foreground sm:text-4xl">
             <Trans
               i18nKey="healthy.header.titleHtml"
               components={{

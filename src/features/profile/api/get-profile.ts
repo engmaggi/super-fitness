@@ -1,28 +1,9 @@
 import axios from "axios";
 import { apiClient } from "@/lib/api-client";
 import { clearAuthToken } from "@/lib/auth-token";
+import type { AuthUser, ProfileResponse } from "@/features/profile/types/profile-type";
 
-export type AuthUser = {
-  id: string;
-  _id: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  gender: string;
-  age: number;
-  weight: number;
-  height: number;
-  activityLevel: string;
-  goal: string;
-  photo: string;
-  createdAt: string;
-};
-
-type ProfileResponse = {
-  message: string;
-  user: Omit<AuthUser, "id">;
-  error?: string;
-};
+export type { AuthUser, ProfileResponse } from "@/features/profile/types/profile-type";
 
 export async function getProfile(): Promise<AuthUser> {
   try {
