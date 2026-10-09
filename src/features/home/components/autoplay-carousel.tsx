@@ -14,7 +14,7 @@ export default function AutoplayCarousel() {
                 {[...items, ...items].map((item, index) => (
                     <div key={index} className="flex flex-row items-center justify-center  ms-4 ">
                         <img src={starIcon} alt="" className="w-6 h-6 lg:w-9 lg:h-9"/>
-                        <p className="font-ticker text-base lg:text-ticker font-bold leading-36 tracking-0 ms-2 lg:ms-4 ">{item}</p>
+                        <p className="font-ticker text-base lg:text-ticker font-bold leading-36 tracking-0 ms-2 lg:ms-4 uppercase">{item}</p>
                     </div>
                 ))}
             </div>
