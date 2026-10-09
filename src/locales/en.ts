@@ -200,6 +200,32 @@ export const en = {
       loadCategoriesFailed: "Failed to load meal categories. Please try again later.",
     },
   },
+  about: {
+    watermark: "About Us",
+    eyebrow: "About Us",
+    title: "Empowering You To Achieve <highlight>Your Fitness</highlight> Goals",
+    description:
+      "We believe fitness is more than a workout. With top-tier facilities, certified trainers, and a supportive community, we guide every step of your journey.",
+    getStarted: "Get Started",
+    features: [
+      {
+        title: "Personal Trainer",
+        description: "Achieve your fitness goals with the guidance of our certified trainers.",
+      },
+      {
+        title: "Cardio Programs",
+        description: "From steady-state runs to interval sprints, our treadmill programs are built for progress.",
+      },
+      {
+        title: "Quality Equipment",
+        description: "Our gym is equipped with the latest cardio and strength machines.",
+      },
+      {
+        title: "Healthy Nutrition",
+        description: "Fuel your journey with customized meal plans that fit your lifestyle.",
+      },
+    ],
+  },
   whyUs: {
     watermark: "Why Us",
     eyebrow: "Why Us",

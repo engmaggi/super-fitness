@@ -5,7 +5,7 @@ import about3 from "@/assets/about-3.png"
 export function AboutMediaCollage() {
   return (
     <>
-      <div className="w-full space-y-4 sm:space-y-5 lg:hidden">
+      {/* <div className="w-full space-y-4 sm:space-y-5 lg:hidden">
         <img
           src={about1}
           alt="Athlete holding a kettlebell"
@@ -21,13 +21,13 @@ export function AboutMediaCollage() {
           alt="Member working out in the gym"
           className="w-full rounded-3xl object-cover shadow-xl aspect-[4/5]"
         />
-      </div>
+      </div> */}
 
-      <div className="relative hidden h-[46rem] w-full lg:block">
+      <div className="relative  h-[46rem] w-full ">
         <img
           src={about1}
           alt="Athlete holding a kettlebell"
-          className="absolute top-0 left-0 z-10 h-[30rem] w-[48%] rounded-4xl object-cover shadow-xl"
+          className="absolute top-0 left-0 z-10 h-[30rem] w-[54%] lg:w-[48%] rounded-4xl object-cover shadow-xl"
         />
         <img
           src={about2}
@@ -37,7 +37,7 @@ export function AboutMediaCollage() {
         <img
           src={about3}
           alt="Member working out in the gym"
-          className="absolute right-[8%] bottom-0 z-20 h-[31rem] w-[58%] rounded-[2.5rem] object-cover shadow-xl"
+          className="absolute lg:right-[8%] right-[0%] bottom-0 z-20 h-[31rem] w-[65%] lg:w-[58%] rounded-[2.5rem] object-cover shadow-xl"
         />
       </div>
     </>
