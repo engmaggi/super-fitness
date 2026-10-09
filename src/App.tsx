@@ -12,17 +12,9 @@ import ChangePasswordPage from "./features/auth/pages/change-password-page";
 import LoginPage from "./features/auth/pages/login-page";
 import AboutPage from "./features/about/pages/about-page";
 import { ProfileGrid } from "./features/profile";
+import ClassPage from "./features/class/pages/class-page";
+import ClassDetailsPage from "./features/class/pages/class-details-page";
 
-function PlaceholderPage({ title }: { title: string }) {
-  return (
-    <div className="flex flex-1 flex-col items-center justify-center p-8 py-24">
-      <h1 className="font-heading text-page-title">{title}</h1>
-      <p className="mt-2 text-muted-foreground font-sans text-base">
-        Coming soon
-      </p>
-    </div>
-  );
-}
 
 function pages(): RouteObject[] {
   return [
@@ -31,7 +23,8 @@ function pages(): RouteObject[] {
       children: [
         { index: true, element: <HomePage /> },
         { path: "about", element: <AboutPage /> },
-        { path: "classes", element: <PlaceholderPage title="Classes" /> },
+        { path: "classes", element: <ClassPage /> },
+        { path: "classes/:id", element: <ClassDetailsPage /> },
         { path: "healthy", element: <HealthyPage /> },
         { path: "healthy/:id", element: <MealDetailsPage /> },
         { path: "settings", element: <ProfileGrid/> },
