@@ -1,6 +1,7 @@
 import { AboutSection } from "@/features/about/components/about-section";
 import { MealsSection } from "@/features/healthy/components/meals-section";
 import HeroSection from "../components/hero";
+import WhyUsSection from "../components/whyUs";
 
 export default function HomePage() {
   return (
@@ -8,7 +9,7 @@ export default function HomePage() {
       <HeroSection />
       <AboutSection />
       <h2 className={"font-heading text-page-title"}>workout Section</h2>
-      <h2 className={"font-heading text-page-title"}>why us Section</h2>
+      <WhyUsSection />
       <MealsSection />
     </div>
   );
