@@ -4,8 +4,14 @@ import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import AutoplayCarousel from './autoplay-carousel';
+import { useNavigate } from 'react-router-dom';
+import { useLocalePath } from '@/lib/use-locale-path';
+
+
 export default function HeroSection() {
   const { t } = useTranslation();
+  const navigate = useNavigate()
+  const localePath = useLocalePath()
   const targets = [1200, 12, 20];
   const [tickerCount, setTickerCount] = useState([0, 0, 0]);
 
@@ -56,9 +62,9 @@ export default function HeroSection() {
             </div>
             <div className='flex flex-row  gap-7  lg:gap-8'>
               <Button className="btn-arrow relative text-sm leading-140 lg:text-base lg:leading-none"
-                variant="pill">{t("hero.getStarted")}</Button>
+                variant="pill" onClick={() => navigate(localePath("/register"))}>{t("hero.getStarted")}</Button>
               <Button className="btn-arrow relative bg-transparent text-primary hover:text-primary-foreground border-primary text-sm leading-140 lg:text-base lg:leading-none"
-                variant="pill">{t("hero.exploreMore")}</Button>
+                variant="pill" onClick={() => navigate(localePath("/classes"))}>{t("hero.exploreMore")}</Button>
             </div>
 
           </div>
