@@ -27,7 +27,7 @@ export function MealsSection() {
       )}
 
       {data && (
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-8">
           {(["breakfast", "lunch", "dinner"] as const).map((type) => {
             const first = data[type][0];
             if (!first) return null;

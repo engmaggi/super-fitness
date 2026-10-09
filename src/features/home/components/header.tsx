@@ -86,7 +86,7 @@ export default function Header() {
           <img
             src={headerLogo}
             alt="Super Fitness"
-            className="h-14 w-auto object-contain sm:h-20 md:h-20"
+            className="h-14 w-auto object-contain sm:h-14 md:h-14"
           />
         </Link>
 

@@ -15,11 +15,13 @@ import googleIcon from "@/assets/icons/Google-vector.svg";
 import appleIcon from "@/assets/icons/apple-vector.svg";
 import { login } from "../api/login";
 import { createLoginSchema, type LoginSchema } from "../utils/login-schema";
+import { useAuth } from "../context/use-auth";
 
 export default function LoginForm() {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const localePath = useLocalePath();
+  const { refreshUser } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
@@ -42,6 +44,7 @@ export default function LoginForm() {
     setIsLoading(true);
     try {
       await login(data);
+      await refreshUser();
       toast.success(t("auth.loginSuccess"));
       navigate(localePath("/"));
     } catch (err) {

@@ -50,6 +50,13 @@ export const figmaTokens = {
       color: "#F3F3F4",
       transform: "capitalize",
     },
+    ticker: {
+      family: "ticker",
+      size: 22.3,
+      weight: 700,
+      lineHeight: 36,
+      letterSpacing: 0,
+    },
     section: { family: "heading", size: 64, weight: 700 },
   },
   control: {

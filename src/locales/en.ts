@@ -142,6 +142,25 @@ export const en = {
       },
     },
   },
+  hero: {
+    title: "Your body can <highlight>stand almost</highlight> anything",
+    description:
+      "It's your mind that needs convincing. Push past your limits, stay committed, and watch as your body transform into powerhouse of strength and resilience. Start your journey today & truly capable of!",
+    activeMembers: "Active Members",
+    certifiedTrainers: "Certified Trainers",
+    yearsOfExperience: "Year Of Experience",
+    getStarted: "Get Started",
+    exploreMore: "Explore More",
+    imageAlt: "Hero Image",
+  },
+  autoplayTicker: [
+    "outdoor & online trainers",
+    "personal training",
+    "live classes",
+    "personal trainers",
+    "personal training",
+    "live classes",
+  ],
   healthy: {
     explore: "Explore",
     readMore: "Read More",
@@ -178,6 +197,67 @@ export const en = {
       loadMealsFailed: "Failed to load meals for {{category}}. Please try again later.",
       loadCategoriesFailed: "Failed to load meal categories. Please try again later.",
     },
+  },
+  about: {
+    watermark: "About Us",
+    eyebrow: "About Us",
+    title: "Empowering You To Achieve <highlight>Your Fitness</highlight> Goals",
+    description:
+      "We believe fitness is more than a workout. With top-tier facilities, certified trainers, and a supportive community, we guide every step of your journey.",
+    getStarted: "Get Started",
+    features: [
+      {
+        title: "Personal Trainer",
+        description: "Achieve your fitness goals with the guidance of our certified trainers.",
+      },
+      {
+        title: "Cardio Programs",
+        description: "From steady-state runs to interval sprints, our treadmill programs are built for progress.",
+      },
+      {
+        title: "Quality Equipment",
+        description: "Our gym is equipped with the latest cardio and strength machines.",
+      },
+      {
+        title: "Healthy Nutrition",
+        description: "Fuel your journey with customized meal plans that fit your lifestyle.",
+      },
+    ],
+  },
+  whyUs: {
+    watermark: "Why Us",
+    eyebrow: "Why Us",
+    title: "Elevate fitness with the <highlight>best way</highlight> possible",
+    description:
+      "We offer a fitness journey that's tailored to your goals, supported by professional trainers and a welcoming community. Whether it's weight loss, strength building, or overall wellness, our proven methods.",
+    points: [
+      {
+        title: "personalized fitness plans",
+        description:
+          "We tailor every workout to fit your unique goals and fitness level ensuring that you make the most progress.",
+      },
+      {
+        title: "results-driven focus",
+        description:
+          "Everything we do is designed to help you achieve measurable results, whether you're aiming for weight loss.",
+      },
+      {
+        title: "state-of-the-art equipment",
+        description:
+          "We provide the latest in gym equipment, from cardio machines to free weights, designed to support every type.",
+      },
+    ],
+  },
+  footer: {
+    logoAlt: "Super Fitness",
+    tagline: "Push harder, go further. Your <br/>fitness journey starts today!",
+    contactUs: "contact us",
+    phoneAlt: "Phone",
+    emailAlt: "Email",
+    gymTiming: "our gym timing",
+    weekdayHours: "Mon - Fri : 08:00 AM - 10:00 PM",
+    location: "our location",
+    address: "2715 Ash Dr. San Jose, South<br/> Dakota 83475",
   },
 } as const
 

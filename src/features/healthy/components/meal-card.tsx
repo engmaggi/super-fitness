@@ -65,12 +65,20 @@ export function MealCard({
         className="h-full w-full object-cover rounded-[28px]"
       />
       {/* Gradient overlay */}
-      <div className="absolute inset-0 rounded-[28px] bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 rounded-[28px] bg-linear-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
       <CardFooter>
         <CardTitle className="line-clamp-1">{displayTitle}</CardTitle>
-        <CardLink onClick={handleClick} className="cursor-pointer">
-          {resolvedLinkText}
-        </CardLink>
+        <CardLink
+  to={meal?.idMeal ? localePath(`/healthy/${meal.idMeal}`) : "#"}
+  onClick={(e) => {
+    if (!meal?.idMeal) {
+      e.preventDefault();
+    }
+  }}
+  className="cursor-pointer"
+>
+  {resolvedLinkText}
+</CardLink>
       </CardFooter>
     </Card>
   );
