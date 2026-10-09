@@ -1,5 +1,6 @@
 import { Card, CardFooter, CardLink, CardTitle } from "@/components/ui/card";
 import { useTranslation } from "react-i18next";
+import { useLocalePath } from "@/lib/use-locale-path";
 
 export type ClassCardProps = {
   classes?: {
@@ -51,6 +52,10 @@ export function ClassCard({
   className,
 }: ClassCardProps) {
   const { t } = useTranslation();
+  const localePath = useLocalePath();
+  const classPath = classes?._id
+    ? localePath(`/classes/${classes._id}`)
+    : null;
 
   const displayTitle = title ?? classes?.exercise ?? "";
   const displayImage =
@@ -92,7 +97,17 @@ export function ClassCard({
           {displayTitle}
         </CardTitle>
 
-        <CardLink onClick={onClick} className="cursor-pointer">
+        <CardLink
+          to={classPath ?? "#"}
+          onClick={(event) => {
+            event.stopPropagation();
+            if (!classPath) {
+              event.preventDefault();
+              onClick?.();
+            }
+          }}
+          className="cursor-pointer"
+        >
           {resolvedLinkText}
         </CardLink>
       </CardFooter>

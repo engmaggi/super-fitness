@@ -84,6 +84,7 @@ type MealDetailsResponse = {
     strInstructions: string;
     strArea: string;
     strCategory: string;
+    strTags: string | null;
     [key: `strIngredient${number}`]: string | null;
     [key: `strMeasure${number}`]: string | null;
   })[] | null;

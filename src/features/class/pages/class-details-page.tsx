@@ -14,7 +14,6 @@ import {
   fetchMealsByCategory,
   fetchExerciseById,
   BEGINNER_LEVEL_ID,
-  type Class,
 } from "@/features/class/api/class";
 
 const MUSCLE_GROUP_IDS = ["69d982ed85f6bfa972bf2218"];
@@ -98,8 +97,6 @@ export default function ClassDetailsPage() {
 
   const videoUrl =
     selectedExercise?.short_youtube_demonstration_link;
-
-  const thumbnail = getYouTubeThumbnail(videoUrl);
 
   const levels = ["Beginner", "Intermediate", "Advanced"];
 
