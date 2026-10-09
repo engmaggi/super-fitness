@@ -4,8 +4,12 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { getAuthToken } from "@/lib/auth-token";
-import { getProfile } from "../api/get-profile";
+import {
+  AUTH_SESSION_CLEARED_EVENT,
+  clearAuthToken,
+  getAuthToken,
+} from "@/lib/auth-token";
+import { getProfile } from "../../profile/api/get-profile";
 import { AuthContext } from "./auth-context";
 
 export function AuthProvider({ children }: { children: ReactNode }) {
@@ -41,6 +45,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
+  const logout = useCallback(() => {
+    clearAuthToken();
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    sessionStorage.removeItem("token");
+    setUser(null);
+    setError(null);
+    setIsLoading(false);
+  }, []);
+
   useEffect(() => {
     if (!getAuthToken()) return;
 
@@ -51,8 +65,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       });
   }, [refreshUser]);
 
+  useEffect(() => {
+    const handleSessionCleared = () => {
+      setUser(null);
+      setError(null);
+      setIsLoading(false);
+    };
+
+    window.addEventListener(AUTH_SESSION_CLEARED_EVENT, handleSessionCleared);
+    return () =>
+      window.removeEventListener(AUTH_SESSION_CLEARED_EVENT, handleSessionCleared);
+  }, []);
+
   return (
-    <AuthContext.Provider value={{ user, isLoading, error, refreshUser }}>
+    <AuthContext.Provider value={{ user, isLoading, error, refreshUser, logout }}>
       {children}
     </AuthContext.Provider>
   );

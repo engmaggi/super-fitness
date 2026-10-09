@@ -15,6 +15,31 @@ export const ar = {
     loggedOut: "تم تسجيل الخروج بنجاح",
     openMenu: "فتح قائمة التنقل",
   },
+  profile: {
+    loading: "جارٍ تحميل إعداداتك...",
+    loadError: "تعذر تحميل إعداداتك.",
+    tryAgain: "يرجى المحاولة مرة أخرى.",
+    retry: "إعادة المحاولة",
+    goal: "هدفك",
+    level: "المستوى",
+    weight: "الوزن",
+    tapToChange: "اضغط للتغيير",
+    saveChanges: "حفظ التغييرات",
+    saving: "جارٍ الحفظ...",
+    saved: "تم تحديث الملف الشخصي بنجاح.",
+    changePassword: "تغيير كلمة المرور",
+    selectLanguage: "اختر اللغة",
+    mood: "المظهر",
+    security: "الأمان",
+    privacyPolicy: "سياسة الخصوصية",
+    help: "المساعدة",
+    comingSoon: "هذه الميزة قادمة قريبًا.",
+    guestTitle: "ملفك الرياضي يبدأ من هنا",
+    guestDescription:
+      "سجّل الدخول لعرض إعداداتك الرياضية وتحديث أهدافك ومتابعة تقدمك في مكان واحد.",
+    login: "تسجيل الدخول إلى حسابك",
+    backHome: "العودة إلى الرئيسية",
+  },
   auth: {
     greeting: "أهلًا بك",
     welcomeBack: "مرحبًا بعودتك",
@@ -52,6 +77,8 @@ export const ar = {
     noAccountYet: "ليس لديك حساب بعد؟",
     alreadyHaveAccount: "هل لديك حساب بالفعل؟",
     registerSuccess: "تم إنشاء الحساب! أهلًا بك.",
+    registrationLoginRequired:
+      "تم إنشاء حسابك، لكن تعذر تسجيل الدخول تلقائيًا. يرجى تسجيل الدخول.",
     loginSuccess: "تم تسجيل الدخول بنجاح.",
     errors: {
       firstNameRequired: "الاسم الأول مطلوب",
@@ -266,4 +293,3 @@ export const ar = {
     address: "2715 Ash Dr. San Jose, South<br/> Dakota 83475",
   },
 } as const;
-

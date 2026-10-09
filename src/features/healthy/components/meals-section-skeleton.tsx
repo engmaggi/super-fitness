@@ -19,10 +19,9 @@ export function MealsSectionSkeleton({
       {Array.from({ length: pageSize }).map((_, i) => (
         <div
           key={i}
-          className="h-80 w-full animate-pulse rounded-[28px] bg-white/10"
+          className="h-80 w-full animate-pulse rounded-[28px] bg-foreground/10"
         />
       ))}
     </div>
   );
 }
-

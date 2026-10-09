@@ -17,11 +17,15 @@ import appleIcon from "@/assets/icons/apple-vector.svg";
 import { Eye, EyeOff, Lock, Mail, User } from "lucide-react";
 import { KycWizard, type KycData } from "../kyc/components/KycWizard";
 import { register } from "../api/register";
+import { login } from "../api/login";
+import { setAuthToken } from "@/lib/auth-token";
+import { useAuth } from "../context/use-auth";
 
 export default function RegisterForm() {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const localePath = useLocalePath();
+  const { refreshUser } = useAuth();
   //states
   const [isLoading, setIsLoading] = useState(false);
   // Show/hide toggles
@@ -74,9 +78,22 @@ export default function RegisterForm() {
   const onSubmit = async (data: RegisterSchema) => {
     setIsLoading(true);
     try {
-      await register(data);
-      toast.success(t("auth.registerSuccess"));
-      navigate(localePath("/"));
+      const response = await register(data);
+
+      try {
+        if (response.token) {
+          setAuthToken(response.token);
+        } else {
+          await login({ email: data.email, password: data.password });
+        }
+        await refreshUser();
+        toast.success(t("auth.registerSuccess"));
+        navigate(localePath("/"));
+      } catch (signInError) {
+        toast.success(t("auth.registerSuccess"));
+        toast.error(t("auth.registrationLoginRequired"));
+        navigate(localePath("/login"));
+      }
     } catch (err) {
       const message = err instanceof Error ? err.message : "";
       if (
